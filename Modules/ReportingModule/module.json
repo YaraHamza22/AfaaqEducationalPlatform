@@ -1,0 +1,11 @@
+{
+    "name": "ReportingModule",
+    "alias": "reportingmodule",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ReportingModule\\Providers\\ReportingModuleServiceProvider"
+    ],
+    "files": []
+}

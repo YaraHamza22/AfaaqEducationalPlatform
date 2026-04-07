@@ -1,0 +1,14 @@
+{
+    "name": "AssessmentModule",
+    "alias": "assessmentmodule",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\AssessmentModule\\Providers\\AssessmentModuleServiceProvider",
+        "Modules\\AssessmentModule\\Providers\\EventServiceProvider",
+        "Modules\\AssessmentModule\\Providers\\RouteServiceProvider"
+
+    ],
+    "files": []
+}

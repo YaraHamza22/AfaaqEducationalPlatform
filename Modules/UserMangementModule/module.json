@@ -1,0 +1,13 @@
+{
+    "name": "UserMangementModule",
+    "alias": "usermangementmodule",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\UserMangementModule\\Providers\\UserMangementModuleServiceProvider",
+           "Modules\\UserMangementModule\\Providers\\EventServiceProvider",
+              "Modules\\UserMangementModule\\Providers\\RouteServiceProvider"
+    ],
+    "files": []
+}
