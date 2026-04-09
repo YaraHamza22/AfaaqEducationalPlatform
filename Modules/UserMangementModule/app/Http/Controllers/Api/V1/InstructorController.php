@@ -27,13 +27,13 @@ class InstructorController extends Controller
 
     public function index(Request $request)
     {
-        $instructors = $this->instructorService->list($request->all());
+        $instructors = $this->instructorService->list($request->validated());
 
         return self::paginated($instructors, 'instructors retrieved successfully');
     }
     public function store(InstructorStoreRequest $request)
     {
-        $instructor = $this->instructorService->create($request->all());
+        $instructor = $this->instructorService->create($request->validated());
 
         return self::success($instructor, 'instructor created successfully', 201);
     }
@@ -45,7 +45,7 @@ class InstructorController extends Controller
     }
     public function update(InstructorUpdateRequest $request, int $id)
     {
-        $instructor = $this->instructorService->update($id, $request->all());
+        $instructor = $this->instructorService->update($id, $request->validated());
 
         return self::success($instructor, 'instructor updated successfully');
     }

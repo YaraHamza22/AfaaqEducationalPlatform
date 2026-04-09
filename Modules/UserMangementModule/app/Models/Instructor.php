@@ -4,15 +4,16 @@ namespace Modules\UserMangementModule\Models;
 
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Modules\UserMangementModule\Models\Builders\InstructorBuilder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-// use Modules\UserManagementModule\Database\Factories\InstructorFactory;
+// use Modules\UserMangementModule\Database\Factories\InstructorFactory;
 
-class Instructor extends Model 
+class Instructor extends Model implements HasMedia
 {
-    use HasFactory, SoftDeletes ,Notifiable;
+    use HasFactory, SoftDeletes , InteractsWithMedia,Notifiable;
 
     /**
      * The attributes that are mass assignable.

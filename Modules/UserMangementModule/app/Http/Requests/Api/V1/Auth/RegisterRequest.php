@@ -28,7 +28,12 @@ class RegisterRequest extends FormRequest
             'phone' => ['required', 'string', 'phone'],
             'date_of_birth'=>'required|date',
             'gender'=>['required',Rule::in(['male','female'])],
-            'address'=>'nullable|max:500'
+            'address'=>'nullable|max:500',
+            'education_level'=>'required|string',
+            'country'=>'required|string',
+            'bio' => 'nullable|string|max:1000',
+            'specialization' => 'nullable|string|max:255',
+            'joined_at' => 'nullable|date'
         ];
     }
 

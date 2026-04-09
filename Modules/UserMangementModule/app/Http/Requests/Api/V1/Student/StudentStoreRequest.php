@@ -29,7 +29,7 @@ class StudentStoreRequest extends FormRequest
             'address'=>'nullable|max:500',
             'education_level'=>'required|string',
             'country'=>'required|string',
-            'bio' => 'nullable|text|max:1000',
+            'bio' => 'nullable|string|max:1000',
             'specialization' => 'nullable|string|max:255',
             'joined_at' => 'nullable|date'
         ];

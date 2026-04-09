@@ -17,7 +17,7 @@ class StudentBuilder extends Builder
 
     public function byEducation(array $levels)
     {
-        return $this->whereIn('educational_level',$levels);
+        return $this->whereIn('education_level',$levels);
     }
 
 }

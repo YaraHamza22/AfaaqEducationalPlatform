@@ -23,7 +23,7 @@ class Course extends Model implements HasMedia
     /**
      * Represents a course in the e-learning platform.
      */
-    use SoftDeletes, CascadeSoftDeletes, LogsActivity, InteractsWithMedia;
+    use SoftDeletes, CascadeSoftDeletes, LogsActivity, InteractsWithMedia, HasTranslations;
 
     /**
      * Relationships that should cascade on delete.
@@ -38,6 +38,8 @@ class Course extends Model implements HasMedia
      * @var string
      */
     protected $primaryKey = 'course_id';
+
+    public array $translatable = ['title', 'description', 'objectives', 'prerequisites'];
 
     /**
      * The attributes that are mass assignable.

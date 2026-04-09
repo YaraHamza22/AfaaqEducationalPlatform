@@ -53,7 +53,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 ValidationException::class => [
                     'statusCode' => 422,
                     'message' => $e->getMessage(),
-                    'errors' => $e->errors()->all(),
+                    'errors' => $e->errors(),
                 ],
                 AuthenticationException::class => [
                     'statusCode' => 401,

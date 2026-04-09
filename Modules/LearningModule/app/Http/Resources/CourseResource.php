@@ -32,11 +32,12 @@ class CourseResource extends JsonResource
             'title' => $this->getTranslatedAttribute($this->resource, 'title', $locale),
             'slug' => $this->slug,
             'description' => $this->getTranslatedAttribute($this->resource, 'description', $locale),
+            'description_translations' => $this->resource->getTranslations('description'),
             'objectives' => $this->getTranslatedAttribute($this->resource, 'objectives', $locale),
+            'objectives_translations' => $this->resource->getTranslations('objectives'),
             'prerequisites' => $this->getTranslatedAttribute($this->resource, 'prerequisites', $locale),
+            'prerequisites_translations' => $this->resource->getTranslations('prerequisites'),
             'actual_duration_hours' => $this->actual_duration_hours,
-            'allocated_budget' => $this->allocated_budget,
-            'required_budget' => $this->required_budget,
             'language' => $this->language,
             'status' => $this->status,
             'min_score_to_pass' => $this->min_score_to_pass,
@@ -96,6 +97,7 @@ class CourseResource extends JsonResource
                 return $this->units->map(function ($unit) use ($locale) {
                     return [
                         'id' => $unit->unit_id,
+                        'title_translations' => $unit->getTranslations('title'),
                         'title' => $this->getTranslatedAttribute($unit, 'title', $locale),
                         'slug' => $unit->slug,
                         'unit_order' => $unit->unit_order,

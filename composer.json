@@ -13,6 +13,7 @@
         "laravel/tinker": "^3.0",
         "nwidart/laravel-modules": "^13.0",
         "php-open-source-saver/jwt-auth": "^2.9",
+        "predis/predis": "^3.4",
         "propaganistas/laravel-phone": "^6.0",
         "spatie/laravel-activitylog": "^4.12",
         "spatie/laravel-medialibrary": "^11.21",

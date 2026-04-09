@@ -29,7 +29,7 @@ class StudentUpdateRequest extends FormRequest
             'address'=>'sometimes|nullable|max:500',
             'education_level'=>'sometimes|string',
             'country'=>'sometimes|string',
-            'bio' => 'sometimes|nullable|text|max:1000',
+            'bio' => 'sometimes|nullable|string|max:1000',
             'specialization' => 'sometimes|nullable|string|max:255',
             'joined_at' => 'sometimes|nullable|date'
         ];

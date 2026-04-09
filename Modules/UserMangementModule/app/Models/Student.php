@@ -11,15 +11,16 @@ use Modules\UserMangementModule\Models\Builders\StudentBuilder;
 use Modules\UserMangementModule\Enums\EducationalLevel;
 // use Modules\UserMangementModule\Database\Factories\StudentFactory;
 
-class Student extends Model
+class Student extends Model 
 {
-    use HasFactory, SoftDeletes ,Notifiable;
+    use HasFactory, SoftDeletes ,Notifiable ;
 
     /**
      * The attributes that are mass assignable.
      */
     protected $fillable = [
-        'educational_level',
+        'user_id',
+        'education_level',
         'country',
         'bio',
         'specialization',
@@ -30,7 +31,7 @@ class Student extends Model
     protected function casts(): array
     {
         return [
-            'educational_level' =>EducationalLevel::class,
+            'education_level' => EducationalLevel::class,
             'joined_at' => 'datetime'
 
         ];

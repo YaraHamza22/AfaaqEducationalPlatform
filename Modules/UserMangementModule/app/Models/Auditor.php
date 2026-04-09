@@ -4,14 +4,15 @@ namespace Modules\UserMangementModule\Models;
 
 use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Notifications\Notifiable;
+use Spatie\MediaLibrary\InteractsWithMedia;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\UserMangementModule\Models\Builders\AuditorBuilder;
-use Modules\UserMangementModule\Database\Factories\AuditorFactory;
+use Modules\UserManagementModule\Database\Factories\AuditorFactory;
 
-class Auditor extends Model 
+
+class Auditor extends Model implements HasMedia
 {
-    use  SoftDeletes , Notifiable;
+    use  SoftDeletes , InteractsWithMedia;
 
     /**
      * The attributes that are mass assignable.

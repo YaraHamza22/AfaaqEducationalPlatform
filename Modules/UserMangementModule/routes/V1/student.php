@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth:api', 'role:student']], function () {
      * @controller StudentDashboardController@dashboard
      */
     Route::get('/dashboard', [StudentDashboardController::class, 'dashboard']);
+    
 
     /**
     |--------------------------------------------------------------------------

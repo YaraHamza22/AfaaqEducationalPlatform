@@ -29,8 +29,10 @@ class CourseCategoryResource extends JsonResource
         return [
             'id' => $this->course_category_id,
             'name' => $this->getTranslatedAttribute($this->resource, 'name', $locale),
+            'name_translations' => $this->resource->getTranslations('name'),
             'slug' => $this->slug,
             'description' => $this->getTranslatedAttribute($this->resource, 'description', $locale),
+            'description_translations' => $this->resource->getTranslations('description'),
             'is_active' => $this->is_active,
             'target_audience' => $this->target_audience,
             'created_at' => $this->created_at?->toDateTimeString(),
@@ -43,6 +45,7 @@ class CourseCategoryResource extends JsonResource
                     return [
                         'id' => $course->course_id,
                         'title' => $this->getTranslatedAttribute($course, 'title', $locale),
+                        'title_translations' => $course->getTranslations('title'),
                         'slug' => $course->slug,
                         'status' => $course->status,
                     ];

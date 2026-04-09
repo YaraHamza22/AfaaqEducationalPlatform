@@ -1,5 +1,7 @@
 <?php
 namespace Modules\UserMangementModule\DTOs;
+use Illuminate\Http\UploadedFile;
+
 readonly class InstructorDTO{
       public function __construct(
         public ?string $name,
@@ -12,7 +14,7 @@ readonly class InstructorDTO{
         public ?string $bio,
         public ?string $specialization,
         public ?int $yearsOfExperience,
-
+        public ?UploadedFile $avatar = null,
 
     ) 
     {}
@@ -35,6 +37,7 @@ readonly class InstructorDTO{
             bio: $data['bio'] ?? null,
             specialization: $data['specialization'] ?? null,
             yearsOfExperience: $data['years_of_experience'] ?? null,
+            avatar: $data['avatar'] ?? null 
 
         ); 
     }
