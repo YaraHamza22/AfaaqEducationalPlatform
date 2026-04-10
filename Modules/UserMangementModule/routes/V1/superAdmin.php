@@ -295,7 +295,7 @@ Route::group([
      * @param  {course: slug}
      * @controller CourseController@removeInstructor
      */
-    Route::delete('/courses/{course}/instructors/remove', [CourseController::class, 'removeInstructor']);
+        Route::post('courses/{course}/remove-instructor', [CourseController::class, 'removeInstructor']);
 
     /**
      * @name   Set Primary Instructor
@@ -349,12 +349,12 @@ Route::group([
 
     /**
      * @name   Reorder Units in Course
-     * @path   POST /api/v1/super-admin/units/course/{course}/reorder
+     * @path   POST /api/v1/super-admin/courses/{course}/units/reorder
      * @desc   Reorder units within a course.
      * @param  {course: slug}
      * @controller UnitController@reorder
      */
-    Route::post('/units/course/{course}/reorder', [UnitController::class, 'reorder']);
+    Route::post('courses/{course}/units/reorder', [UnitController::class, 'reorder']);
 
     /**
      * @name   Get Unit Count for Course

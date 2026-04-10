@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('enrollments', function (Blueprint $table) {
-            $table->id('enrollment_id');
+          $table->id('enrollment_id');
             $table->foreignId('learner_id')->constrained('users')->restrictOnDelete();
             $table->foreignId('course_id')->constrained('courses', 'course_id')->restrictOnDelete();
             $table->foreignId('enrolled_by')->nullable()->constrained('users')->cascadeOnDelete();
@@ -44,6 +44,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('enrollements');
+        Schema::dropIfExists('enrollments');
     }
 };
+
