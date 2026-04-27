@@ -55,7 +55,7 @@ class CourseController extends Controller
     {
         $this->courseService = $courseService;
         $this->courseInstructorService = $courseInstructorService;
-        $this->middleware('permission:list-courses')->only('index');
+        $this->middleware('permission:list-courses')->only(['index', 'getAllForSuperAdmin']);
         $this->middleware('permission:show-course')->only('show');
         $this->middleware('permission:create-course')->only('store');
         $this->middleware('permission:update-course')->only('update');
@@ -97,6 +97,52 @@ class CourseController extends Controller
                 'error' => $e->getMessage(),
             ]);
             throw new Exception('Unable to retrieve courses at this time. Please try again later.', 500);
+        }
+    }
+
+    /**
+     * Get all courses with pagination for super admin.
+     *
+     * @param FilterCoursesRequest $request
+     * @return JsonResponse
+     * @throws Exception
+     */
+    public function getAllForSuperAdmin(FilterCoursesRequest $request): JsonResponse
+    {
+        try {
+            $getCourses = function () use ($request) {
+                return Course::query()
+                    ->filterByRequest($request)
+                    ->withRelations()
+                    ->ordered()
+                    ->paginateFromRequest($request)
+                    ->through(fn($course) => new CourseResource($course));
+            };
+
+            $queryString = $request->getQueryString();
+            if ($queryString !== null && $queryString !== '') {
+                $cacheKey = 'courses.all.superadmin.' . md5($queryString);
+                $courses = $this->remember($cacheKey, 900, $getCourses, ['courses']);
+            } else {
+                $courses = $getCourses();
+            }
+
+            return self::paginated(
+                $courses,
+                'All courses retrieved successfully for super admin.'
+            );
+        } catch (Exception $e) {
+            Log::error('Unexpected error retrieving all courses for super admin', [
+                'user_id' => Auth::id(),
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+
+            $errorMessage = App::environment('local', 'testing')
+                ? $e->getMessage()
+                : 'A system error occurred while retrieving courses. Please try again later.';
+
+            throw new Exception($errorMessage, 500);
         }
     }
 
