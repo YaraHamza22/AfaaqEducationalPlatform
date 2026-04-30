@@ -25,7 +25,7 @@ class InstructorController extends Controller
         $this->middleware('permission:delete-instructor')->only('destroy');
     }
 
-    public function index(Request $request)
+    public function index(InstructorFilterRequest $request)
     {
         $instructors = $this->instructorService->list($request->validated());
 
@@ -43,9 +43,9 @@ class InstructorController extends Controller
 
         return self::success($instructor);
     }
-    public function update(InstructorUpdateRequest $request, int $id)
+    public function update(InstructorUpdateRequest $request, User $instructor)
     {
-        $instructor = $this->instructorService->update($id, $request->validated());
+        $instructor = $this->instructorService->update($instructor, $request->validated());
 
         return self::success($instructor, 'instructor updated successfully');
     }

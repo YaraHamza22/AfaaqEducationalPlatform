@@ -12,7 +12,7 @@ class InstructorFilterRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'term'=>'soetimes|string|max:100',
+            'term'=>'sometimes|string|max:100',
             'years'=>'sometimes|int',
         ];
     }
