@@ -184,6 +184,14 @@ Route::group([
     Route::get('/courses', [CourseController::class, 'index']);
 
     /**
+     * @name   List All Courses
+     * @path   GET /api/v1/super-admin/courses/all
+     * @desc   Retrieve all courses across the platform with pagination.
+     * @controller CourseController@getAllForSuperAdmin
+     */
+    Route::get('/courses/all', [CourseController::class, 'getAllForSuperAdmin']);
+
+    /**
      * @name   Enrollable Courses List
      * @path   GET /api/v1/super-admin/courses/enrollable/list
      * @desc   List courses available for enrollment.

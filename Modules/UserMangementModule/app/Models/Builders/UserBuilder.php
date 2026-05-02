@@ -25,8 +25,12 @@ class UserBuilder extends Builder
         return $this->where('gender',$gender);
     }
 
-    public function filter()
+    public function filters(array $filters): self
     {
-        return $this;
+        return $this->when($filters['term'] ?? null, function ($query, $term) {
+            $query->search($term);
+        })->when($filters['gender'] ?? null, function ($query, $gender) {
+            $query->gender($gender);
+        });
     }
 }

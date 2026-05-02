@@ -53,14 +53,14 @@ class CourseBuilder extends Builder
     }
 
     /**
-     * Filter courses by course type
+     * Filter courses by course category
      *
-     * @param int $courseTypeId
+     * @param int $courseCategoryId
      * @return self
      */
-    public function byCourseType(int $courseTypeId): self
+    public function byCourseCategory(int $courseCategoryId): self
     {
-        return $this->where('course_type_id', $courseTypeId);
+        return $this->where('course_category_id', $courseCategoryId);
     }
 
 
@@ -151,14 +151,14 @@ class CourseBuilder extends Builder
 
     /**
      * Filter courses that are available for enrollment
-     * (published with active course type)
+     * (published with active course category)
      *
      * @return self
      */
     public function enrollable(): self
     {
         return $this->published()
-            ->whereHas('courseType', function ($query) {
+            ->whereHas('courseCategory', function ($query) {
                 $query->where('is_active', true);
             });
     }
@@ -265,7 +265,7 @@ class CourseBuilder extends Builder
      */
     public function withRelations(): self
     {
-        return $this->with(['courseType', 'instructors', 'creator']);
+        return $this->with(['courseCategory', 'instructors', 'creator']);
     }
 
     /**
@@ -275,17 +275,17 @@ class CourseBuilder extends Builder
      */
     public function withAllRelations(): self
     {
-        return $this->with(['courseType', 'instructors', 'creator', 'units', 'enrollments']);
+        return $this->with(['courseCategory', 'instructors', 'creator', 'units', 'enrollments']);
     }
 
     /**
-     * Eager load course type relationship
+     * Eager load course category relationship
      *
      * @return self
      */
-    public function withCourseType(): self
+    public function withCourseCategory(): self
     {
-        return $this->with('courseType');
+        return $this->with('courseCategory');
     }
 
     /**
@@ -404,9 +404,9 @@ class CourseBuilder extends Builder
             $query = $query->byStatus($request->input('status'));
         }
 
-        // Filter by course type
-        if ($request->filled('course_type_id')) {
-            $query = $query->byCourseType((int) $request->input('course_type_id'));
+        // Filter by course category
+        if ($request->filled('course_category_id')) {
+            $query = $query->byCourseCategory((int) $request->input('course_category_id'));
         }
 
         // Filter by program
