@@ -41,7 +41,7 @@ class LessonController extends Controller
     public function __construct(LessonService $lessonService)
     {
         $this->lessonService = $lessonService;
-         $this->middleware('permission:list-lessons')->only('index');
+        $this->middleware('permission:list-lessons')->only('index');
         $this->middleware('permission:show-lesson')->only('show');
         $this->middleware('permission:create-lesson')->only('store');
         $this->middleware('permission:update-lesson')->only('update');

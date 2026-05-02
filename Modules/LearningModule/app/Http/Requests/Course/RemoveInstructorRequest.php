@@ -2,13 +2,13 @@
 
 namespace Modules\LearningModule\Http\Requests\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for removing an instructor from a course.
  * Handles validation for instructor removal.
  */
-class RemoveInstructorRequest extends FormRequest
+class RemoveInstructorRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

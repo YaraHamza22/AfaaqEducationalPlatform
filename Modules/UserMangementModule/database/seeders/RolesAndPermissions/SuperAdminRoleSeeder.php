@@ -3,9 +3,11 @@
 namespace Modules\UserMangementModule\Database\Seeders\RolesAndPermissions;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use Modules\UserMangementModule\Models\User;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\PermissionRegistrar;
 
 class SuperAdminRoleSeeder extends Seeder
 {
@@ -14,8 +16,10 @@ class SuperAdminRoleSeeder extends Seeder
      */
     public function run(): void
     {
-        $superAdminRole = Role::create(['name' => 'super-admin', 'guard_name' => 'api']);
-        $permissions = Permission::where('guard_name','api')->get();
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
+
+        $superAdminRole = Role::findOrCreate('super-admin', 'api');
+        $permissions = Permission::where('guard_name', 'api')->get();
         $superAdminRole->syncPermissions($permissions);
      
 
@@ -24,19 +28,21 @@ class SuperAdminRoleSeeder extends Seeder
             "karam@example.com"
         ];
         
-        foreach($superAdmins as $admin){
-             $superAdmin = User::firstOrCreate(['email' => $admin],
+        foreach ($superAdmins as $admin) {
+            $superAdmin = User::updateOrCreate(['email' => $admin],
                 [
                     "name" => "admin",
                     "email" => $admin,
-                    "password" => "P@ssw0rd",
+                    "password" => Hash::make("P@ssw0rd"),
                     "phone" => "+963991554887",
                     "date_of_birth" => "2025-01-30",
                     "gender" => "male"
                 ]);
 
-            $superAdmin->assignRole($superAdminRole);
+            // Keep super-admin role consistent and avoid stale permission cache issues.
+            $superAdmin->syncRoles([$superAdminRole->name]);
         }
-       
+
+        app(PermissionRegistrar::class)->forgetCachedPermissions();
     }
 }

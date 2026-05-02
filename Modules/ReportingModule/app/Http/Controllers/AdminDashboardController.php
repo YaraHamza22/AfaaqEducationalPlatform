@@ -51,6 +51,14 @@ class AdminDashboardController extends Controller
         }
     }
 
+    /**
+     * Route alias: GET /api/v1/super-admin/dashboard uses {@see dashboard()}.
+     */
+    public function index(): JsonResponse
+    {
+        return $this->dashboard();
+    }
+
     public function generateCoursePopularityReport(GenerateCourseReportRequest $request): JsonResponse
     {
         try {

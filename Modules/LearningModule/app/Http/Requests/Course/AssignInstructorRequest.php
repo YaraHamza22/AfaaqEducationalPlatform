@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
  * Form request for assigning an instructor to a course.
  * Handles validation for instructor assignment.
  */
-class AssignInstructorRequest extends FormRequest
+class AssignInstructorRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

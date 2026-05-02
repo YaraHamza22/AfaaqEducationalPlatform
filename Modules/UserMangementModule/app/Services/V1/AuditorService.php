@@ -13,31 +13,30 @@ class AuditorService
     private const CACHE_TTL = 3600;
     private const TAG_GLOBAL = 'auditors';
     private const TAG_PREFIX_AUDITOR = 'auditor_';
+    private const CACHE_VERSION_KEY = 'auditors_cache_version';
 
     public function list(array $filters, int $perPage = 15)
     {
         ksort($filters);
         $filtersKey = md5(json_encode($filters));
-        $cacheKey = "auditors_list_{$filtersKey}_limit_{$perPage}";
+        $cacheVersion = $this->getCacheVersion();
+        $cacheKey = "auditors_list_{$filtersKey}_limit_{$perPage}_v{$cacheVersion}";
 
-        return Cache::tags([self::TAG_GLOBAL])->remember(
-            $cacheKey,
-            self::CACHE_TTL,
-            function () use ($perPage) {
-                return User::whereHas('auditorProfile')
-                    ->with(['media', 'auditorProfile', 'roles.permissions'])
-                    ->paginate($perPage);
-            }
-        );
+        return $this->rememberWithTags([self::TAG_GLOBAL], $cacheKey, function () use ($perPage) {
+            return User::whereHas('auditorProfile')
+                ->with(['media', 'auditorProfile', 'roles.permissions'])
+                ->paginate($perPage);
+        });
     }
 
     public function findById(int $id)
     {
-        $cacheKey = "auditor_details_{$id}";
+        $cacheVersion = $this->getCacheVersion();
+        $cacheKey = "auditor_details_{$id}_v{$cacheVersion}";
 
-        return Cache::tags([self::TAG_GLOBAL, self::TAG_PREFIX_AUDITOR . $id])->remember(
+        return $this->rememberWithTags(
+            [self::TAG_GLOBAL, self::TAG_PREFIX_AUDITOR . $id],
             $cacheKey,
-            self::CACHE_TTL,
             function () use ($id) {
                 return User::with(['media', 'auditorProfile', 'roles.permissions'])
                     ->findOrFail($id);
@@ -47,7 +46,7 @@ class AuditorService
 
     public function create(AuditorDTO $auditorDTO)
     {
-        return DB::transaction(function () use ($auditorDTO) {
+        $user = DB::transaction(function () use ($auditorDTO) {
             $userData = $auditorDTO->userData();
             $auditorData = $auditorDTO->auditorData();
 
@@ -73,11 +72,15 @@ class AuditorService
 
             return $user->load(['media', 'auditorProfile', 'roles.permissions']);
         });
+
+        $this->invalidateCache();
+
+        return $user;
     }
 
     public function update(User $user, AuditorDTO $auditorDTO)
     {
-        return DB::transaction(function () use ($auditorDTO, $user) {
+        $updatedUser = DB::transaction(function () use ($auditorDTO, $user) {
             $user->update($auditorDTO->userData());
 
             if (isset($auditorDTO->avatar)) {
@@ -95,6 +98,10 @@ class AuditorService
 
             return $user->load(['media', 'auditorProfile', 'roles.permissions'])->refresh();
         });
+
+        $this->invalidateCache($user->id);
+
+        return $updatedUser;
     }
 
     public function delete(User $user): void
@@ -104,6 +111,44 @@ class AuditorService
             $user->delete();
         });
 
-        Cache::tags([self::TAG_GLOBAL, self::TAG_PREFIX_AUDITOR . $user->id])->flush();
+        $this->invalidateCache($user->id);
+    }
+
+    private function rememberWithTags(array $tags, string $cacheKey, callable $callback)
+    {
+        if (Cache::supportsTags()) {
+            return Cache::tags($tags)->remember($cacheKey, self::CACHE_TTL, $callback);
+        }
+
+        return Cache::remember($cacheKey, self::CACHE_TTL, $callback);
+    }
+
+    private function invalidateCache(?int $auditorId = null): void
+    {
+        if (Cache::supportsTags()) {
+            $tags = [self::TAG_GLOBAL];
+            if ($auditorId !== null) {
+                $tags[] = self::TAG_PREFIX_AUDITOR . $auditorId;
+            }
+
+            Cache::tags($tags)->flush();
+            return;
+        }
+
+        $this->bumpCacheVersion();
+    }
+
+    private function getCacheVersion(): int
+    {
+        return (int) Cache::rememberForever(self::CACHE_VERSION_KEY, fn () => 1);
+    }
+
+    private function bumpCacheVersion(): void
+    {
+        if (!Cache::has(self::CACHE_VERSION_KEY)) {
+            Cache::forever(self::CACHE_VERSION_KEY, 1);
+        }
+
+        Cache::increment(self::CACHE_VERSION_KEY);
     }
 }

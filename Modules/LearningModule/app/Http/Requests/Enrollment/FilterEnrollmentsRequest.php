@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\Enrollment;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
  * Form request for filtering enrollments.
  * Handles validation for enrollment filtering parameters.
  */
-class FilterEnrollmentsRequest extends FormRequest
+class FilterEnrollmentsRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

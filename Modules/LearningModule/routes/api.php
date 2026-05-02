@@ -33,17 +33,22 @@ Route::middleware(['auth:api'])->prefix('v1')->group(function () {
     Route::post('courses/{course}/units/reorder', [UnitController::class, 'reorder']);
     Route::post('units/{unit}/move', [UnitController::class, 'moveToPosition']);
     Route::get('units/{unit}/duration', [UnitController::class, 'getDuration']);
-    Route::get('units/{unit}/can-delete', [UnitController::class, 'canBeDeleted']);
     Route::get('courses/{course}/units/count', [UnitController::class, 'getUnitCount']);
 
     Route::apiResource('lessons', LessonController::class);
     Route::get('units/{unit}/lessons', [LessonController::class, 'byUnit']);
-    Route::post('units/{unit}/lessons/reorder', [LessonController::class, 'reorder']);
-    Route::post('lessons/{lesson}/move', [LessonController::class, 'moveToPosition']);
     Route::get('lessons/{lesson}/duration', [LessonController::class, 'getDuration']);
     Route::get('units/{unit}/lessons/count', [LessonController::class, 'getLessonCount']);
 
-    Route::apiResource('enrollments', EnrollmentController::class);
-    Route::patch('enrollments/{enrollment}/status', [EnrollmentController::class, 'updateStatus']);
-    Route::get('enrollments/{enrollment}/progress', [EnrollmentController::class, 'getProgress']);
+    Route::get('/', [EnrollmentController::class, 'index'])->name('enrollments.index');
+    Route::post('/', [EnrollmentController::class, 'store'])->name('enrollments.store');
+    Route::get('/{enrollment}', [EnrollmentController::class, 'show'])->name('enrollments.show');
+    Route::put('/{enrollment}', [EnrollmentController::class, 'update'])->name('enrollments.update');
+
+    // Enrollment status management
+    Route::put('/{enrollment}/status', [EnrollmentController::class, 'updateStatus'])->name('enrollments.update-status');
+
+    // Enrollment progress
+    Route::get('/{enrollment}/progress', [EnrollmentController::class, 'getProgress'])->name('enrollments.progress');
+
 });

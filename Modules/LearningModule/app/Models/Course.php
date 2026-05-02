@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Modules\AssesmentModule\Models\Quiz;
 
 class Course extends Model implements HasMedia
 {
@@ -91,6 +93,11 @@ class Course extends Model implements HasMedia
     {
         return 'slug';
     }
+    public function quizzes(): MorphMany
+    {
+        return $this->morphMany(Quiz::class, 'quizable');
+    }
+    
 
     /**
      * Custom Eloquent builder.
@@ -178,6 +185,8 @@ class Course extends Model implements HasMedia
                 "Course '{$this->getTranslation('title', 'en')}' was {$event}"
             );
     }
+
+    
 
     /* =====================
      | Media Library

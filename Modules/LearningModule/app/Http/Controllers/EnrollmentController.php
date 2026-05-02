@@ -272,7 +272,8 @@ class EnrollmentController extends Controller
                 'enrollment_id' => $enrollment->enrollment_id ?? null,
                 'error' => $e->getMessage(),
             ]);
-            throw new Exception('Unable to retrieve enrollment progress.', 500);
+          //  throw new Exception('Unable to retrieve enrollment progress.', 500);
+            throw $e;
         }
     }
 }

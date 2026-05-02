@@ -11,6 +11,8 @@ use Dyrynda\Database\Support\CascadeSoftDeletes;
 use Modules\LearningModule\Builders\UnitBuilder;
 use Spatie\Activitylog\LogOptions;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+use Modules\AssesmentModule\Models\Quiz;
 
 class Unit extends Model
 {
@@ -95,6 +97,11 @@ class Unit extends Model
     public function lessons(): HasMany
     {
         return $this->hasMany(Lesson::class, 'unit_id', 'unit_id')->orderBy('lesson_order');
+    }
+
+    public function quizzes(): MorphMany
+    {
+        return $this->morphMany(Quiz::class, 'quizable');
     }
 
     /**

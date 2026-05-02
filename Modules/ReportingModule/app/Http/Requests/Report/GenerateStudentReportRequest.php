@@ -2,12 +2,12 @@
 
 namespace Modules\ReportingModule\Http\Requests\Report;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for generating student performance reports.
  */
-class GenerateStudentReportRequest extends FormRequest
+class GenerateStudentReportRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {

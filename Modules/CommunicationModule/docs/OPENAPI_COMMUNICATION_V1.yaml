@@ -1,0 +1,691 @@
+openapi: 3.0.3
+info:
+  title: Communication Module API
+  version: 1.0.0
+  description: Endpoints for chat, notifications, forum, integrations, virtual sessions, webhooks, and offline package sync.
+servers:
+  - url: /api/v1
+paths:
+  /chat-threads:
+    get:
+      summary: List chat threads for current user
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: Threads fetched
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedChatThreadsResponse'
+        '401': { description: Unauthorized }
+    post:
+      summary: Create chat thread
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreChatThreadRequest'
+      responses:
+        '201':
+          description: Thread created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChatThreadResponse'
+        '422': { description: Validation error }
+  /chat-threads/{chatThread}:
+    get:
+      summary: Show one chat thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+      responses:
+        '200': { description: Thread fetched }
+    delete:
+      summary: Archive chat thread
+      description: Use archive endpoint in implementation; DELETE shown for testing compatibility.
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+      responses:
+        '405': { description: Not supported in current implementation }
+  /chat-threads/{chatThread}/archive:
+    post:
+      summary: Archive a chat thread (owner only)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+      responses:
+        '200': { description: Thread archived }
+  /chat-threads/{chatThread}/participants:
+    get:
+      summary: List participants in a chat thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+      responses:
+        '200': { description: Participants fetched }
+    post:
+      summary: Add participant to thread (owner only)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddChatParticipantRequest'
+      responses:
+        '201': { description: Participant added }
+  /chat-threads/{chatThread}/participants/{userId}:
+    delete:
+      summary: Remove participant from thread (owner only)
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+        - in: path
+          name: userId
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Participant removed }
+  /chat-unread-count:
+    get:
+      summary: Get unread chat messages count
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Unread count fetched }
+  /chat-threads/{chatThread}/messages:
+    get:
+      summary: List messages in a chat thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+      responses:
+        '200':
+          description: Messages fetched
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedChatMessagesResponse'
+    post:
+      summary: Send message in a thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatThreadId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreChatMessageRequest'
+      responses:
+        '201': { description: Message sent }
+  /chat-messages/{chatMessage}/read:
+    post:
+      summary: Mark message as read
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatMessageId'
+      responses:
+        '200': { description: Read state stored }
+  /chat-messages/{chatMessage}:
+    delete:
+      summary: Delete own chat message
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ChatMessageId'
+      responses:
+        '200': { description: Message deleted }
+  /forum-threads:
+    get:
+      summary: List forum threads
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Threads fetched }
+    post:
+      summary: Create forum thread
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreForumThreadRequest'
+      responses:
+        '201': { description: Thread created }
+  /forum-threads/{forumThread}:
+    get:
+      summary: Show forum thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumThreadId'
+      responses:
+        '200': { description: Thread fetched }
+    put:
+      summary: Update own forum thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumThreadId'
+      responses:
+        '200': { description: Thread updated }
+    delete:
+      summary: Delete own forum thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumThreadId'
+      responses:
+        '200': { description: Thread deleted }
+  /forum-threads/{forumThread}/posts:
+    get:
+      summary: List posts in thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumThreadId'
+      responses:
+        '200': { description: Posts fetched }
+    post:
+      summary: Create post in thread
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumThreadId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreForumPostRequest'
+      responses:
+        '201': { description: Post created }
+  /forum-posts/{forumPost}/react:
+    post:
+      summary: React to forum post
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumPostId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReactForumPostRequest'
+      responses:
+        '201': { description: Reaction added }
+  /forum-posts/{forumPost}:
+    put:
+      summary: Update own forum post
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumPostId'
+      responses:
+        '200': { description: Post updated }
+    delete:
+      summary: Delete own forum post
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumPostId'
+      responses:
+        '200': { description: Post deleted }
+  /forum-posts/{forumPost}/report:
+    post:
+      summary: Report forum post
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - $ref: '#/components/parameters/ForumPostId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReportForumPostRequest'
+      responses:
+        '201': { description: Report created }
+  /forum-post-reports/{forumPostReport}/review:
+    post:
+      summary: Review report
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: forumPostReport
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewForumPostReportRequest'
+      responses:
+        '200': { description: Report reviewed }
+  /notifications:
+    get:
+      summary: List current user notifications
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Notifications fetched }
+    post:
+      summary: Send notification to users
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreNotificationRequest'
+      responses:
+        '200': { description: Notifications dispatched }
+  /notifications/{notificationId}/read:
+    post:
+      summary: Mark one notification as read
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: notificationId
+          required: true
+          schema: { type: string }
+      responses:
+        '200': { description: Notification marked as read }
+  /notifications/read-all:
+    post:
+      summary: Mark all notifications as read
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Notifications updated }
+  /external-integrations:
+    get:
+      summary: List user integrations
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Integrations fetched }
+    post:
+      summary: Create or update integration
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreIntegrationRequest'
+      responses:
+        '201': { description: Integration saved }
+  /external-integrations/{externalIntegration}:
+    patch:
+      summary: Update integration
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: externalIntegration
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Integration updated }
+    delete:
+      summary: Revoke integration
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: externalIntegration
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Integration revoked }
+  /virtual-sessions:
+    get:
+      summary: List virtual sessions
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Sessions fetched }
+    post:
+      summary: Create virtual session
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreVirtualSessionRequest'
+      responses:
+        '201': { description: Session created }
+  /virtual-sessions/{virtualSession}:
+    get:
+      summary: Show session
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: virtualSession
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Session fetched }
+    patch:
+      summary: Update own session
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: virtualSession
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Session updated }
+    delete:
+      summary: Delete own session
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: virtualSession
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Session deleted }
+  /virtual-sessions/{virtualSession}/publish:
+    post:
+      summary: Publish own session
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: virtualSession
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Session published }
+  /virtual-sessions/{virtualSession}/cancel:
+    post:
+      summary: Cancel own session
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: virtualSession
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Session cancelled }
+  /virtual-sessions/{virtualSession}/attendance:
+    post:
+      summary: Store attendance
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: virtualSession
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreAttendanceRequest'
+      responses:
+        '201': { description: Attendance stored }
+  /offline-packages:
+    get:
+      summary: List offline packages
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200': { description: Packages fetched }
+    post:
+      summary: Create offline package
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreOfflinePackageRequest'
+      responses:
+        '201': { description: Package created }
+  /offline-packages/{offlinePackage}:
+    get:
+      summary: Show package
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: offlinePackage
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Package fetched }
+  /offline-packages/{offlinePackage}/tokens:
+    post:
+      summary: Issue offline token
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: offlinePackage
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IssueDownloadTokenRequest'
+      responses:
+        '201': { description: Token issued }
+  /offline-packages/tokens/{offlineDownloadToken}/revoke:
+    post:
+      summary: Revoke offline token
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - in: path
+          name: offlineDownloadToken
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Token revoked }
+  /offline-sync-logs:
+    post:
+      summary: Store offline sync log
+      security: [{ bearerAuth: [] }]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreOfflineSyncLogRequest'
+      responses:
+        '201': { description: Sync log stored }
+  /webhooks/integrations/{provider}:
+    post:
+      summary: Receive external webhook (no bearer token)
+      description: Signature is validated using HMAC-SHA256 and provider secret.
+      parameters:
+        - in: path
+          name: provider
+          required: true
+          schema:
+            type: string
+            enum: [zoom, google_classroom]
+        - in: header
+          name: X-Signature
+          required: true
+          schema: { type: string }
+          description: Raw hex hash or `sha256=<hex>`.
+      responses:
+        '200': { description: Webhook accepted }
+        '401': { description: Invalid signature }
+        '422': { description: Missing signature }
+components:
+  parameters:
+    ChatThreadId:
+      in: path
+      name: chatThread
+      required: true
+      schema: { type: integer }
+    ChatMessageId:
+      in: path
+      name: chatMessage
+      required: true
+      schema: { type: integer }
+    ForumThreadId:
+      in: path
+      name: forumThread
+      required: true
+      schema: { type: integer }
+    ForumPostId:
+      in: path
+      name: forumPost
+      required: true
+      schema: { type: integer }
+  schemas:
+    StoreChatThreadRequest:
+      type: object
+      required: [participant_ids]
+      properties:
+        title: { type: string, maxLength: 255, nullable: true }
+        course_id: { type: integer, nullable: true }
+        participant_ids:
+          type: array
+          items: { type: integer }
+    AddChatParticipantRequest:
+      type: object
+      required: [user_id]
+      properties:
+        user_id: { type: integer }
+        role: { type: string, nullable: true }
+    StoreChatMessageRequest:
+      type: object
+      required: [body]
+      properties:
+        body: { type: string, maxLength: 4000 }
+        metadata: { type: object, additionalProperties: true, nullable: true }
+    StoreForumThreadRequest:
+      type: object
+      required: [course_id, title]
+      properties:
+        course_id: { type: integer }
+        title: { type: string, maxLength: 255 }
+        body: { type: string, nullable: true }
+    StoreForumPostRequest:
+      type: object
+      required: [body]
+      properties:
+        body: { type: string }
+    ReactForumPostRequest:
+      type: object
+      required: [reaction]
+      properties:
+        reaction: { type: string, maxLength: 30 }
+    ReportForumPostRequest:
+      type: object
+      required: [reason]
+      properties:
+        reason: { type: string, maxLength: 120 }
+        details: { type: string, nullable: true }
+    ReviewForumPostReportRequest:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [reviewed, rejected, resolved]
+    StoreNotificationRequest:
+      type: object
+      required: [user_ids, title, body]
+      properties:
+        user_ids:
+          type: array
+          items: { type: integer }
+        title: { type: string, maxLength: 255 }
+        body: { type: string }
+        type: { type: string, nullable: true }
+        data: { type: object, additionalProperties: true, nullable: true }
+    StoreIntegrationRequest:
+      type: object
+      required: [provider]
+      properties:
+        provider:
+          type: string
+          enum: [zoom, google_classroom]
+        external_account_id: { type: string, nullable: true }
+        access_token: { type: string, nullable: true }
+        refresh_token: { type: string, nullable: true }
+        expires_at: { type: string, format: date-time, nullable: true }
+        is_active: { type: boolean, nullable: true }
+    StoreVirtualSessionRequest:
+      type: object
+      required: [integration_id, provider, title, starts_at]
+      properties:
+        course_id: { type: integer, nullable: true }
+        integration_id: { type: integer }
+        provider:
+          type: string
+          enum: [zoom, google_classroom]
+        title: { type: string, maxLength: 255 }
+        description: { type: string, nullable: true }
+        starts_at: { type: string, format: date-time }
+        ends_at: { type: string, format: date-time, nullable: true }
+        metadata: { type: object, additionalProperties: true, nullable: true }
+    StoreAttendanceRequest:
+      type: object
+      required: [user_id]
+      properties:
+        user_id: { type: integer }
+        joined_at: { type: string, format: date-time, nullable: true }
+        left_at: { type: string, format: date-time, nullable: true }
+        duration_minutes: { type: integer, minimum: 0, nullable: true }
+    StoreOfflinePackageRequest:
+      type: object
+      required: [course_id, version, manifest]
+      properties:
+        course_id: { type: integer }
+        version: { type: string, maxLength: 60 }
+        manifest: { type: object, additionalProperties: true }
+        file_url: { type: string, format: uri, nullable: true }
+        is_active: { type: boolean, nullable: true }
+    IssueDownloadTokenRequest:
+      type: object
+      required: [user_id, expires_at]
+      properties:
+        user_id: { type: integer }
+        device_id: { type: string, maxLength: 120, nullable: true }
+        expires_at: { type: string, format: date-time }
+    StoreOfflineSyncLogRequest:
+      type: object
+      required: [device_id, action]
+      properties:
+        offline_package_id: { type: integer, nullable: true }
+        device_id: { type: string, maxLength: 120 }
+        action: { type: string, maxLength: 60 }
+        payload: { type: object, additionalProperties: true, nullable: true }
+    ChatThreadResponse:
+      type: object
+      properties:
+        success: { type: boolean, example: true }
+        message: { type: string, example: Chat thread created successfully. }
+        data:
+          type: object
+          additionalProperties: true
+    PaginatedChatThreadsResponse:
+      type: object
+      properties:
+        success: { type: boolean, example: true }
+        message: { type: string }
+        data:
+          type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+    PaginatedChatMessagesResponse:
+      type: object
+      properties:
+        success: { type: boolean, example: true }
+        message: { type: string }
+        data:
+          type: object
+          properties:
+            data:
+              type: array
+              items:
+                type: object
+                additionalProperties: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

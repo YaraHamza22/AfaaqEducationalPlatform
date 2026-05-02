@@ -2,7 +2,7 @@
 
 namespace Modules\LearningModule\Http\Requests\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Modules\LearningModule\Models\Course;
 
@@ -10,7 +10,7 @@ use Modules\LearningModule\Models\Course;
  * Form request for updating an existing course.
  * Translatable fields accept string or array with en/ar keys.
  */
-class UpdateCourseRequest extends FormRequest
+class UpdateCourseRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -74,8 +74,8 @@ class UpdateCourseRequest extends FormRequest
             'is_offline_available' => ['sometimes', 'nullable', 'boolean'],
             'course_delivery_type' => ['sometimes', 'nullable', 'string', Rule::in(['self_paced', 'interactive', 'hybrid'])],
             'difficulty_level' => ['sometimes', 'nullable', 'string', Rule::in(['beginner', 'intermediate', 'advanced'])],
-            'cover' => 'nullable|image|max:2048',
-            'intro_video' => 'nullable|mimes:mp4,mov|max:20480',
+            'cover' => 'nullable|image|max:10240',
+            'intro_video' => 'nullable|mimes:mp4,mov|max:2097152',
         ];
     }
 

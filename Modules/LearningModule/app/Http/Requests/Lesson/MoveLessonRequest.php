@@ -2,13 +2,13 @@
 
 namespace Modules\LearningModule\Http\Requests\Lesson;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for moving a lesson to a specific position.
  * Handles validation for lesson position change.
  */
-class MoveLessonRequest extends FormRequest
+class MoveLessonRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

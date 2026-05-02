@@ -21,7 +21,7 @@ use Modules\ReportingModule\Http\Controllers\StudentDashboardController;
  * @access Student Only
  * @scope  CourseAccessScope (filters courses by student to insure students can only access their enrolled courses)
  */
-Route::group(['middleware' => ['auth:api', 'role:student']], function () {
+Route::group(['middleware' => ['auth:api', 'role:student,api']], function () {
     /**
     |--------------------------------------------------------------------------
     | Student Dashboard (Reporting Module)

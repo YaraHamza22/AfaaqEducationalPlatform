@@ -2,13 +2,13 @@
 
 namespace Modules\LearningModule\Http\Requests\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for setting an instructor as primary.
  * Handles validation for setting primary instructor.
  */
-class SetPrimaryInstructorRequest extends FormRequest
+class SetPrimaryInstructorRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

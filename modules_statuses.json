@@ -1,7 +1,8 @@
 {
     "AssesmentModule": true,
-    "AssessmentModule": true,
+    "AssessmentModule": false,
     "UserMangementModule": true,
     "LearningModule": true,
-    "ReportingModule": true
+    "ReportingModule": true,
+    "CommunicationModule": true
 }

@@ -20,7 +20,7 @@ use Modules\ReportingModule\Http\Controllers\TeacherDashboardController;
  * @access Instructor Only
  * @scope  CourseAccessScope (filters courses by instructor to insure instructors can only access their assigned courses)
  */
-Route::group(['middleware' => ['auth:api', 'role:instructor']], function () {
+Route::group(['middleware' => ['auth:api', 'role:instructor,api']], function () {
 
     /**
     |--------------------------------------------------------------------------

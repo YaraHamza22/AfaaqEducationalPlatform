@@ -2,10 +2,10 @@
 
 namespace Modules\UserMangementModule\Http\Requests\Api\V1\Role;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateRoleRequest extends FormRequest
+class UpdateRoleRequest extends ApiFormRequest
 {
     /**
      * Get the validation rules that apply to the request.

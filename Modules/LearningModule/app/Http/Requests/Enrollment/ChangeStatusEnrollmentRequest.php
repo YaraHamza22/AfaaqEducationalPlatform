@@ -2,7 +2,7 @@
 
 namespace Modules\LearningModule\Http\Requests\Enrollment;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Modules\LearningModule\Enums\EnrollmentStatus;
 
@@ -10,7 +10,7 @@ use Modules\LearningModule\Enums\EnrollmentStatus;
  * Form request for changing enrollment status.
  * Handles validation for enrollment status updates.
  */
-class ChangeStatusEnrollmentRequest extends FormRequest
+class ChangeStatusEnrollmentRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

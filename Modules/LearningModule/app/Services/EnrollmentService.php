@@ -256,9 +256,9 @@ class EnrollmentService
     protected function getCompletedLessonsCount(Enrollment $enrollment): int
     {
         return Lesson::whereHas('unit', function ($query) use ($enrollment) {
-            $query->where('course_id', $enrollment->course_id);
+            $query->where('units.course_id', $enrollment->course_id);
         })->whereHas('completedByEnrollments', function ($query) use ($enrollment) {
-            $query->where('enrollment_id', $enrollment->enrollment_id);
+            $query->where('enrollments.enrollment_id', $enrollment->enrollment_id);
         })->count();
     }
 
@@ -389,7 +389,8 @@ class EnrollmentService
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-            return null;
+        //    return null;
+            throw $e;
         }
     }
 
@@ -444,6 +445,55 @@ class EnrollmentService
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
+        }
+    }
+    public function update(Enrollment $enrollment, array $data): ?Enrollment
+    {
+        try {
+            $enrollment->update($data);
+            $this->clearEnrollmentCache($enrollment->learner_id, $enrollment->course_id);
+            return $enrollment->fresh();
+        } catch (\Exception $e) {
+            Log::error("Failed to update enrollment", [
+                'enrollment_id' => $enrollment->enrollment_id,
+                'data' => $data,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return null;
+        }
+    }
+    public function updateStatus(Enrollment $enrollment, EnrollmentStatus $status): ?Enrollment
+    {
+        try {
+            $updateData = ['enrollment_status' => $status->value];
+
+            if ($status === EnrollmentStatus::COMPLETED) {
+                $updateData['progress_percentage'] = 100.00;
+                if (!$enrollment->completed_at) {
+                    $updateData['completed_at'] = now();
+                }
+            } elseif (in_array($status, [EnrollmentStatus::DROPPED, EnrollmentStatus::SUSPENDED], true)) {
+                $updateData['progress_percentage'] = 0.00;
+            }
+
+            $enrollment->update($updateData);
+            $this->clearEnrollmentCache($enrollment->learner_id, $enrollment->course_id);
+
+            Log::info("Enrollment status updated", [
+                'enrollment_id' => $enrollment->enrollment_id,
+                'new_status' => $status->value,
+             ]);
+
+            return $enrollment->fresh();
+        } catch (\Exception $e) {
+            Log::error("Failed to update enrollment status", [
+                'enrollment_id' => $enrollment->enrollment_id,
+                'new_status' => $status->value,
+                'error' => $e->getMessage(),
+                'trace' => $e->getTraceAsString(),
+            ]);
+            return null;
         }
     }
 }

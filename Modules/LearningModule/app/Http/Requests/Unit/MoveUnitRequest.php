@@ -2,13 +2,13 @@
 
 namespace Modules\LearningModule\Http\Requests\Unit;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for moving a unit to a specific position.
  * Handles validation for unit position change.
  */
-class MoveUnitRequest extends FormRequest
+class MoveUnitRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

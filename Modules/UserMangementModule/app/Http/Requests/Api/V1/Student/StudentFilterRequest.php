@@ -2,12 +2,12 @@
 
 namespace Modules\UserMangementModule\Http\Requests\Api\V1\Student;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Enum;
 use Modules\UserMangementModule\Enums\EducationalLevel;
 
-class StudentFilterRequest extends FormRequest
+class StudentFilterRequest extends ApiFormRequest
 {
     /**
      * Get the validation rules that apply to the request.

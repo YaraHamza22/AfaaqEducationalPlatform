@@ -2,9 +2,9 @@
 
 namespace Modules\UserMangementModule\Http\Requests\Api\V1\Auth;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
-class LoginRequest extends FormRequest
+class LoginRequest extends ApiFormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -12,8 +12,8 @@ class LoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email'=>'required|email|exists:users,email',
-            'password'=>'required'
+            'email' => 'required|email',
+            'password' => 'required',
         ];
     }
 

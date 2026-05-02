@@ -124,7 +124,7 @@ class User extends Authenticatable implements JWTSubject, HasMedia
      * - Allows using fluent, reusable query helpers typed to `UserBuilder`.
      *
      * @param \Illuminate\Database\Query\Builder $query
-     * @return \Modules\UserManagementModule\Models\Builders\UserBuilder
+     * @return \Modules\UserMangementModule\Models\Builders\UserBuilder
      */
     public function newEloquentBuilder($query): UserBuilder
     {

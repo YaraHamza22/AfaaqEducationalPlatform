@@ -506,7 +506,8 @@ class CourseController extends Controller
                 'user_id' => Auth::id(),
                 'error' => $e->getMessage(),
             ]);
-            throw new Exception('An error occurred while removing the instructor.', 500);
+          //  throw new Exception('An error occurred while removing the instructor.', 500);
+          throw $e;
         }
     }
 

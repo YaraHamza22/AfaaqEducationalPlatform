@@ -2,10 +2,10 @@
 
 namespace Modules\UserMangementModule\Http\Requests\Api\V1\User;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
-class UserFilterRequest extends FormRequest
+class UserFilterRequest extends ApiFormRequest
 {
     /**
      * Get the validation rules that apply to the request.

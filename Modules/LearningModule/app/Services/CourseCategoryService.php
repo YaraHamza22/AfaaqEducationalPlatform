@@ -183,7 +183,8 @@ class CourseCategoryService
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-            return null;
+          //  return null;
+            throw $e;
         }
     }
 

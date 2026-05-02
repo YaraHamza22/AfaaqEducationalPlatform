@@ -58,7 +58,7 @@ class LessonService
             $lesson = Lesson::create($data);
 
             if (isset($data['video']) && $data['video']->isValid()) {
-                $lesson->addMedia($data['video'])->toMediaCollection('lesson_video');
+                $lesson->addMedia($data['video'])->toMediaCollection('video');
             }
 
             if (isset($data['attachments']) && is_array($data['attachments'])) {
@@ -109,7 +109,7 @@ class LessonService
 
             $lesson->update($data);
             if (isset($data['video']) && $data['video']->isValid()) {
-                $lesson->addMedia($data['video'])->toMediaCollection('lesson_video');
+                $lesson->addMedia($data['video'])->toMediaCollection('video');
             }
 
             if (isset($data['attachments']) && is_array($data['attachments'])) {
@@ -179,87 +179,7 @@ class LessonService
         }
     }
 
-    /**
-     * Reorder lessons within a unit.
-     *
-     * @param Unit $unit
-     * @param array $lessonOrders Array of ['lesson_id' => order] pairs
-     * @return void
-     * @throws Exception
-     */
-    public function reorder(Unit $unit, array $lessonOrders): bool
-    {
-        // Validate all orders are unique
-        $orders = array_values($lessonOrders);
-        if (count($orders) !== count(array_unique($orders))) {
-            Log::warning("Attempted to reorder lessons with duplicate orders", [
-                'unit_id' => $unit->unit_id,
-            ]);
-            return false;
-        }
-
-        try {
-            DB::transaction(function () use ($unit, $lessonOrders) {
-                foreach ($lessonOrders as $lessonId => $order) {
-                    Lesson::where('unit_id', $unit->unit_id)
-                        ->where('lesson_id', $lessonId)
-                        ->update(['lesson_order' => $order]);
-                }
-            });
-
-            Log::info("Lessons reordered", [
-                'unit_id' => $unit->unit_id,
-                'lessons_count' => count($lessonOrders),
-            ]);
-            return true;
-        } catch (Exception $e) {
-            Log::error("Failed to reorder lessons", [
-                'unit_id' => $unit->unit_id,
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-            ]);
-            return false;
-        }
-    }
-
-    /**
-     * Move lesson to a specific position.
-     *
-     * @param Lesson $lesson
-     * @param int $newOrder
-     * @return Lesson
-     * @throws Exception
-     */
-    public function moveToPosition(Lesson $lesson, int $newOrder): ?Lesson
-    {
-        try {
-            return DB::transaction(function () use ($lesson, $newOrder) {
-                $this->validateOrder(Lesson::class, 'unit_id', $lesson->unit_id, $newOrder, 'lesson_order', 'lesson_id', $lesson->lesson_id, 'Lesson');
-
-                // Shift other lessons if needed
-                $this->shiftOrders(Lesson::class, 'unit_id', $lesson->unit_id, $lesson->lesson_order, $newOrder, 'lesson_order', 'lesson_id', $lesson->lesson_id);
-
-                $lesson->update(['lesson_order' => $newOrder]);
-
-                Log::info("Lesson moved to position", [
-                    'lesson_id' => $lesson->lesson_id,
-                    'old_order' => $lesson->lesson_order,
-                    'new_order' => $newOrder,
-                ]);
-
-                return $lesson->fresh();
-            });
-        } catch (Exception $e) {
-            Log::error("Failed to move lesson", [
-                'lesson_id' => $lesson->lesson_id,
-                'new_order' => $newOrder,
-                'error' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-            ]);
-            return null;
-        }
-    }
-
+   
     /**
      * Get lessons for a unit.
      *

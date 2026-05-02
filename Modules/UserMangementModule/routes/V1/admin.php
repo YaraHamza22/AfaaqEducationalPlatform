@@ -26,7 +26,7 @@ use Spatie\Permission\Models\Permission;
  * @access Admin Only
  */
 
-Route::group(['prefix' => '/admin', 'middleware' => ['auth:api', 'role:admin']], function () {
+Route::group(['prefix' => '/admin', 'middleware' => ['auth:api', 'role:admin,api']], function () {
 
     /**
      * @name   Admin Dashboard
@@ -798,7 +798,7 @@ Route::group(['prefix' => '/admin', 'middleware' => ['auth:api', 'role:admin']],
     Route::delete('/auditors/{auditor}',[AuditorController::class,'destroy']);
    
 
-    Route::apiResource('roles', RoleController::class);
+   Route::apiResource('roles', RoleController::class)->names('admin.roles');
     Route::get('permissions', [PermissionController::class, 'index']);
     
 });

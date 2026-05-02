@@ -2,11 +2,11 @@
 
 namespace Modules\UserMangementModule\Http\Requests\Api\V1\User;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
-class UserStoreRequest extends FormRequest
+class UserStoreRequest extends ApiFormRequest
 {
     /**
      * Get the validation rules that apply to the request.

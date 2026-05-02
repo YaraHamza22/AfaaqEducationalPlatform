@@ -2,12 +2,12 @@
 
 namespace Modules\ReportingModule\Http\Requests\Report;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Deprecated request kept only for backward compatibility.
  */
-class GenerateDonorReportRequest extends FormRequest
+class GenerateDonorReportRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {

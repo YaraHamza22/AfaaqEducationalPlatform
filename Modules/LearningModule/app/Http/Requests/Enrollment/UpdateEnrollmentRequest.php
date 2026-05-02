@@ -2,7 +2,7 @@
 
 namespace Modules\LearningModule\Http\Requests\Enrollment;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
@@ -15,7 +15,7 @@ use Illuminate\Validation\Rule;
  * - Final grade is within valid range (0-100)
  * - Only allows updating specific fields
  */
-class UpdateEnrollmentRequest extends FormRequest
+class UpdateEnrollmentRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

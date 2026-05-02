@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\Unit;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
  * Form request for storing a new unit.
  * Translatable fields (title, description) accept string or array with en/ar keys.
  */
-class StoreUnitRequest extends FormRequest
+class StoreUnitRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {

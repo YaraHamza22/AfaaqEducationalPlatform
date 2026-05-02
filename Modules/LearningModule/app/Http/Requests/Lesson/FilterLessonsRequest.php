@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\Lesson;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
  * Form request for filtering lessons.
  * Handles validation for lesson filtering parameters.
  */
-class FilterLessonsRequest extends FormRequest
+class FilterLessonsRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

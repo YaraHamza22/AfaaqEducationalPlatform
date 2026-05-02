@@ -2,7 +2,7 @@
 
 namespace Modules\LearningModule\Http\Requests\Lesson;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Modules\LearningModule\Models\Lesson;
 
@@ -10,7 +10,7 @@ use Modules\LearningModule\Models\Lesson;
  * Form request for updating an existing lesson.
  * Translatable fields accept string or array with en/ar keys.
  */
-class UpdateLessonRequest extends FormRequest
+class UpdateLessonRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {
@@ -43,7 +43,7 @@ class UpdateLessonRequest extends FormRequest
             'lesson_type' => ['sometimes', 'required', 'string', Rule::in(['lecture', 'video', 'interactive', 'reading'])],
             'is_required' => ['sometimes', 'nullable', 'boolean'],
             'actual_duration_minutes' => ['sometimes', 'required', 'integer', 'min:1'],
-            'video'=> 'nullable|file|mimes:mp4,mov,ogg,qt|max:51200',
+            'video'=> 'nullable|file|mimes:mp4,mov,ogg,qt|max:2097152',
             'attachments'=> 'nullable|array',
             'attachments.*'=> 'file|mimes:pdf,zip,rar,doc,docx,ppt,pptx|max:10240',
         ];

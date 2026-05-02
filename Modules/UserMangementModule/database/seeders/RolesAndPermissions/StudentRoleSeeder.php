@@ -39,10 +39,14 @@ class StudentRoleSeeder extends Seeder
             'list-options',
             'show-option',
 
-            //attempt permissions
+            //attempt permissions (full CRUD + lifecycle; aligns with AttemptController)
             'create-attempt',
+            'update-attempt',
+            'delete-attempt',
+            'list-attempts',
             'show-attempt',
             'submit-attempt',
+            'grade-attempt',
 
             //answer permissions
             'create-answer',

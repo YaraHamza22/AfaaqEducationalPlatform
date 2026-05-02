@@ -2,8 +2,10 @@
 
 namespace Modules\ReportingModule\Providers;
 
+use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
+use Modules\ReportingModule\Console\Commands\MaterializeSnapshotsCommand;
 use Nwidart\Modules\Traits\PathNamespace;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -43,7 +45,9 @@ class ReportingModuleServiceProvider extends ServiceProvider
      */
     protected function registerCommands(): void
     {
-        // $this->commands([]);
+        $this->commands([
+            MaterializeSnapshotsCommand::class,
+        ]);
     }
 
     /**
@@ -51,10 +55,10 @@ class ReportingModuleServiceProvider extends ServiceProvider
      */
     protected function registerCommandSchedules(): void
     {
-        // $this->app->booted(function () {
-        //     $schedule = $this->app->make(Schedule::class);
-        //     $schedule->command('inspire')->hourly();
-        // });
+        $this->app->booted(function () {
+            $schedule = $this->app->make(Schedule::class);
+            $schedule->command('reporting:snapshots:materialize')->dailyAt('01:00');
+        });
     }
 
     /**

@@ -2,12 +2,12 @@
 
 namespace Modules\ReportingModule\Http\Requests\Report;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for getting learning time analysis
  */
-class GetLearningTimeAnalysisRequest extends FormRequest
+class GetLearningTimeAnalysisRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

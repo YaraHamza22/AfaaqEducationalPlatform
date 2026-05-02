@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\CourseCategory;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
  * Form request for storing a new course category.
  * Translatable fields (name, description) accept string or array with en/ar keys.
  */
-class StoreCourseCategoryRequest extends FormRequest
+class StoreCourseCategoryRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {

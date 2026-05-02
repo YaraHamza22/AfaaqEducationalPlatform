@@ -2,13 +2,13 @@
 
 namespace Modules\UserMangementModule\Http\Requests\Api\V1\Auth;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 use Propaginistas\LaravelPhone\Rules\Phone;
 
 
-class RegisterRequest extends FormRequest
+class RegisterRequest extends ApiFormRequest
 {
     /**
      * Get the validation rules that apply to the request.

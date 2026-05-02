@@ -2,13 +2,13 @@
 
 namespace Modules\LearningModule\Http\Requests\Unit;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for reordering units within a course.
  * Handles validation for unit reordering.
  */
-class ReorderUnitsRequest extends FormRequest
+class ReorderUnitsRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

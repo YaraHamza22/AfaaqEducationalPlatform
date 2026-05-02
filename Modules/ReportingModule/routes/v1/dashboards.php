@@ -15,14 +15,6 @@ Route::group([
     'middleware' => ['auth:api'],
 ], function () {
     Route::group([
-        'prefix' => 'admin',
-        'middleware' => ['role:admin'],
-    ], function () {
-        Route::get('/dashboard', [AdminDashboardController::class, 'dashboard'])
-            ->name('dashboards.admin.dashboard');
-    });
-
-    Route::group([
         'prefix' => 'super-admin',
         'middleware' => ['role:super-admin'],
     ], function () {

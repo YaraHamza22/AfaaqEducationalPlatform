@@ -2,13 +2,13 @@
 
 namespace Modules\ReportingModule\Http\Requests\Report;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for generating course reports.
  * Updated to use course categories instead of course types.
  */
-class GenerateCourseReportRequest extends FormRequest
+class GenerateCourseReportRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {

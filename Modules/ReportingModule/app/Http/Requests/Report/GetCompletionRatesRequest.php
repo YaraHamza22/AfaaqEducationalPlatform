@@ -2,12 +2,12 @@
 
 namespace Modules\ReportingModule\Http\Requests\Report;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
 /**
  * Form request for getting completion rates
  */
-class GetCompletionRatesRequest extends FormRequest
+class GetCompletionRatesRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

@@ -15,6 +15,8 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'v1',
 ], function () {
-    require __DIR__ . '/V1/dashboards.php';
-    require __DIR__ . '/V1/reports.php';
+    require __DIR__ . '/v1/dashboards.php';
+    require __DIR__ . '/v1/reports.php';
+    require __DIR__ . '/v1/snapshots.php';
+    require __DIR__ . '/v1/activity-log.php';
 });

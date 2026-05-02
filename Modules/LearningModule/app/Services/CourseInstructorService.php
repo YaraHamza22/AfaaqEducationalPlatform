@@ -113,7 +113,8 @@ class CourseInstructorService
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-            return false;
+       //     return false;
+            throw $e;
         }
     }
 

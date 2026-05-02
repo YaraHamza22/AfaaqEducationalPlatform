@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
  * Form request for changing course status.
  * Handles validation for status changes.
  */
-class ChangeStatusCourseRequest extends FormRequest
+class ChangeStatusCourseRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

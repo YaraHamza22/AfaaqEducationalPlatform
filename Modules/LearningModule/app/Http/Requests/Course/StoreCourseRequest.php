@@ -2,7 +2,7 @@
 
 namespace Modules\LearningModule\Http\Requests\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
@@ -10,7 +10,7 @@ use Illuminate\Validation\Rule;
  * Handles validation for course creation.
  * Translatable fields (title, description, objectives, prerequisites) accept string or array with en/ar keys.
  */
-class StoreCourseRequest extends FormRequest
+class StoreCourseRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {
@@ -51,8 +51,8 @@ class StoreCourseRequest extends FormRequest
             'is_offline_available' => ['nullable', 'boolean'],
             'course_delivery_type' => ['nullable', 'string', Rule::in(['self_paced', 'interactive', 'hybrid'])],
             'difficulty_level' => ['nullable', 'string', Rule::in(['beginner', 'intermediate', 'advanced'])],
-            'cover' => 'nullable|image|max:2048',
-            'intro_video' => 'nullable|mimes:mp4,mov|max:20480',
+            'cover' => 'nullable|image|max:10240',
+            'intro_video' => 'nullable|mimes:mp4,mov|max:2097152',
         ];
     }
 

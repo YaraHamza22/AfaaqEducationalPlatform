@@ -59,7 +59,7 @@ class UnitService
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-            return null;
+               return null;
         }
     }
 

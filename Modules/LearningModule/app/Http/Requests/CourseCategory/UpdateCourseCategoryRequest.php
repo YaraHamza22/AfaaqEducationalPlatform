@@ -2,7 +2,7 @@
 
 namespace Modules\LearningModule\Http\Requests\CourseCategory;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Modules\LearningModule\Models\CourseCategory;
 
@@ -10,7 +10,7 @@ use Modules\LearningModule\Models\CourseCategory;
  * Form request for updating an existing course category.
  * Translatable fields accept string or array with en/ar keys.
  */
-class UpdateCourseCategoryRequest extends FormRequest
+class UpdateCourseCategoryRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {

@@ -1,0 +1,5224 @@
+[
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/profile",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuthController@profile",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1",
+        "name":  "api.enrollments.index",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1",
+        "name":  "api.enrollments.store",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/auditors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-auditors"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/auditors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/auditors/{auditor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/auditors/{auditor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/auditors/{auditor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/course-categories",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-categories"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/course-categories",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/course-categories/{courseCategory}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/course-categories/{courseCategory}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/course-categories/{courseCategory}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/course-categories/{courseCategory}/activate",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@activate",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/course-categories/{courseCategory}/deactivate",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@deactivate",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-courses"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/courses",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/enrollable/list",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@enrollable",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/instructor/{instructorId}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@byInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}/instructors",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@getInstructors",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/courses/{course}/instructors/assign",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@assignInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/courses/{course}/instructors/primary",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@setPrimaryInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/courses/{course}/instructors/primary",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@unsetPrimaryInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/courses/{course}/instructors/remove",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@removeInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/courses/{course}/publish",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@publish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}/publishability",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@checkPublishability",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/courses/{course}/status",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@changeStatus",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-units"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/courses/{course}/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-lessons"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/courses/{course}/unpublish",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@unpublish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/dashboard",
+        "name":  null,
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/enrollments",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/enrollments",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/enrollments/{enrollment}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/enrollments/{enrollment}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/enrollments/{enrollment}/progress",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@getProgress",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/enrollments/{enrollment}/status",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@updateStatus",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/instructors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-instructors"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/instructors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/instructors/{instructor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/instructors/{instructor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/instructors/{instructor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-lessons"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/lessons/unit/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@byUnit",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/lessons/unit/{unit}/count",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getLessonCount",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/lessons/unit/{unit}/reorder",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@reorder",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/lessons/{lesson}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/lessons/{lesson}/position",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@moveToPosition",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/permissions",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\PermissionController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-permissions"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/reports/courses/content-performance/{courseId}",
+        "name":  "api.reports.admin.courses.content-performance",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@getContentPerformance",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/reports/courses/learning-gaps",
+        "name":  "api.reports.admin.courses.learning-gaps",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@identifyLearningGaps",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/reports/courses/popularity",
+        "name":  "api.reports.admin.courses.popularity",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@generateCoursePopularityReport",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/reports/students/completion-rates",
+        "name":  "api.reports.admin.students.completion-rates",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@getCompletionRates",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/reports/students/learning-time",
+        "name":  "api.reports.admin.students.learning-time",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@getLearningTimeAnalysis",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/reports/students/performance",
+        "name":  "api.reports.admin.students.performance",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@generateStudentPerformanceReport",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/roles",
+        "name":  "admin.roles.index",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/roles",
+        "name":  "admin.roles.store",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/roles/{role}",
+        "name":  "admin.roles.show",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/admin/roles/{role}",
+        "name":  "admin.roles.update",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/roles/{role}",
+        "name":  "admin.roles.destroy",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/students",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-students"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/students",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/students/{student}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/students/{student}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/students/{student}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-units"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/units/course/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@byCourse",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/units/course/{course}/count",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getUnitCount",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/units/course/{course}/reorder",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@reorder",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/units/{unit}/can-delete",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@canBeDeleted",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/units/{unit}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/units/{unit}/position",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@moveToPosition",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/users",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:list-users"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/admin/users",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:create-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/admin/users/{user}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:show-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/admin/users/{user}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:update-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/admin/users/{user}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin,api",
+                           "permission:delete-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/answers",
+        "name":  "api.answers.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AnswerController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-answers"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/answers",
+        "name":  "api.answers.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AnswerController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-answer"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/answers/{answer}",
+        "name":  "api.answers.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AnswerController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:show-answer"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/answers/{answer}",
+        "name":  "api.answers.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AnswerController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-answer"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/answers/{answer}",
+        "name":  "api.answers.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AnswerController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-answer"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/assesmentmodules",
+        "name":  "api.assesmentmodule.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\AssesmentModuleController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/assesmentmodules",
+        "name":  "api.assesmentmodule.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\AssesmentModuleController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/assesmentmodules/{assesmentmodule}",
+        "name":  "api.assesmentmodule.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\AssesmentModuleController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/assesmentmodules/{assesmentmodule}",
+        "name":  "api.assesmentmodule.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\AssesmentModuleController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/assesmentmodules/{assesmentmodule}",
+        "name":  "api.assesmentmodule.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\AssesmentModuleController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/attempts",
+        "name":  "api.attempts.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-attempts"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/attempts",
+        "name":  "api.attempts.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-attempt"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/attempts/{attempt}",
+        "name":  "api.attempts.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:show-attempt"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/attempts/{attempt}",
+        "name":  "api.attempts.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-attempt"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/attempts/{attempt}",
+        "name":  "api.attempts.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-attempt"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/attempts/{attempt}/grade",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@grade",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:grade-attempt"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/attempts/{attempt}/start",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@start",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:submit-attempt"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/attempts/{attempt}/submit",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AttemptController@submit",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:submit-attempt"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/auth/login",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuthController@login",
+        "middleware":  [
+                           "api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/auth/logout",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuthController@logout",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/auth/profile",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuthController@profile",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/auth/refresh",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuthController@refresh",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/auth/register",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuthController@register",
+        "middleware":  [
+                           "api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/chat-messages/{chatMessage}",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatMessageController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-chat_message"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/chat-messages/{chatMessage}/read",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatMessageController@markRead",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-chat_message"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/chat-threads",
+        "name":  "api.chat-threads.index",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-chat_messages"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/chat-threads",
+        "name":  "api.chat-threads.store",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-chat_message"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/chat-threads/{chatThread}/archive",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@archive",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-chat_message"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/chat-threads/{chatThread}/messages",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatMessageController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-chat_messages"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/chat-threads/{chatThread}/messages",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatMessageController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-chat_message"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/chat-threads/{chatThread}/participants",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@participants",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-chat_messages"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/chat-threads/{chatThread}/participants",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@addParticipant",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-chat_message"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/chat-threads/{chatThread}/participants/{userId}",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@removeParticipant",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-chat_message"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/chat-threads/{chat_thread}",
+        "name":  "api.chat-threads.show",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-chat_messages"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/chat-unread-count",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ChatThreadController@unreadCount",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-chat_messages"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/complete-profile",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@fillProfileInfo",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/course-categories",
+        "name":  "api.course-categories.index",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-categories"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/course-categories",
+        "name":  "api.course-categories.store",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/course-categories/{courseCategory}",
+        "name":  "api.course-categories.show",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:show-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/course-categories/{courseCategory}",
+        "name":  "api.course-categories.update",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/course-categories/{courseCategory}",
+        "name":  "api.course-categories.destroy",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/course-categories/{courseCategory}/activate",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@activate",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/course-categories/{courseCategory}/deactivate",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@deactivate",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-courses"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses",
+        "name":  "api.courses.store",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses-enrollable",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@enrollable",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/enrollable/list",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@enrollable",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{courseId}/assessment-progress",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\AssessmentProgressController@courseProgress",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{courseId}/certificate",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\CertificateController@download",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:show-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/courses/{course}",
+        "name":  "api.courses.update",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/courses/{course}",
+        "name":  "api.courses.destroy",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/assign-instructor",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@assignInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/change-status",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@changeStatus",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{course}/duration",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/enroll",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@enroll",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{course}/instructors",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@getInstructors",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/publish",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@publish",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{course}/publishability",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@checkPublishability",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/remove-instructor",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@removeInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/set-primary-instructor",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@setPrimaryInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{course}/units",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@byCourse",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/courses/{course}/units/count",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getUnitCount",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/units/reorder",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@reorder",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/unpublish",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@unpublish",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/courses/{course}/unset-primary-instructor",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@unsetPrimaryInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/dashboard",
+        "name":  null,
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\StudentDashboardController@dashboard",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/enrollments",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/enrollments",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/enrollments/{enrollment}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/enrollments/{enrollment}/progress",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@getProgress",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/external-integrations",
+        "name":  "api.external-integrations.index",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\IntegrationController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/external-integrations",
+        "name":  "api.external-integrations.store",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\IntegrationController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/external-integrations/{external_integration}",
+        "name":  "api.external-integrations.update",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\IntegrationController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/external-integrations/{external_integration}",
+        "name":  "api.external-integrations.destroy",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\IntegrationController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/external-integrations/{provider}/exchange-code",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\IntegrationController@exchangeCode",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/external-integrations/{provider}/oauth-url",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\IntegrationController@oauthUrl",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/forum-post-reports/{forumPostReport}/review",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumPostController@reviewReport",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-post_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/forum-posts/{forumPost}",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumPostController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-post_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/forum-posts/{forumPost}",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumPostController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-post_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/forum-posts/{forumPost}/react",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumPostController@react",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-post_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/forum-posts/{forumPost}/report",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumPostController@report",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-post_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/forum-threads",
+        "name":  "api.forum-threads.index",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumThreadController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-threads_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/forum-threads",
+        "name":  "api.forum-threads.store",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumThreadController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-thread_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/forum-threads/{forumThread}/lock",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumThreadController@lock",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-thread_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/forum-threads/{forumThread}/pin",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumThreadController@pin",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-thread_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/forum-threads/{forumThread}/posts",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumPostController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-posts_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/forum-threads/{forumThread}/posts",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumPostController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-post_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/forum-threads/{forum_thread}",
+        "name":  "api.forum-threads.show",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumThreadController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-threads_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/forum-threads/{forum_thread}",
+        "name":  "api.forum-threads.update",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumThreadController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-thread_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/forum-threads/{forum_thread}",
+        "name":  "api.forum-threads.destroy",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\ForumThreadController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-thread_forum"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/instructor/dashboard/{instructorId}",
+        "name":  "api.dashboards.instructor.dashboard",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\InstructorDashboardController@dashboard",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/instructors/{instructorId}/courses",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@byInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/lessons",
+        "name":  "api.lessons.index",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-lessons"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/lessons",
+        "name":  "api.lessons.store",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/lessons/unit/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@byUnit",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:show-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/lessons/{lesson}",
+        "name":  "api.lessons.update",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/lessons/{lesson}",
+        "name":  "api.lessons.destroy",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/lessons/{lesson}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:list-courses"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:show-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/publishability",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@checkPublishability",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:list-units"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/my-courses/{course}/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:create-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units/count",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getUnitCount",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/my-courses/{course}/units/reorder",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@reorder",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:show-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:update-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:delete-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:list-lessons"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:create-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons/count",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getLessonCount",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons/reorder",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@reorder",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:show-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:update-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api",
+                           "permission:delete-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons/{lesson}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/lessons/{lesson}/position",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@moveToPosition",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/my-courses/{course}/units/{unit}/position",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@moveToPosition",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:instructor,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:list-courses"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:show-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning/{course}/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:list-units"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:show-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning/{course}/units/{unit}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning/{course}/units/{unit}/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:list-lessons"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:show-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/my-learning/{course}/units/{unit}/lessons/{lesson}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/notifications",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\NotificationController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/notifications",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\NotificationController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/notifications/digest/trigger",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\NotificationController@triggerDigest",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/notifications/read-all",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\NotificationController@markAllRead",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/notifications/{notificationId}/read",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\NotificationController@markRead",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/offline-packages",
+        "name":  "api.offline-packages.index",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\OfflinePackageController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/offline-packages",
+        "name":  "api.offline-packages.store",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\OfflinePackageController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/offline-packages/download/{token}",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\OfflinePackageController@downloadByToken",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/offline-packages/tokens/{offlineDownloadToken}/revoke",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\OfflinePackageController@revokeToken",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/offline-packages/{offlinePackage}/tokens",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\OfflinePackageController@issueToken",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/offline-packages/{offline_package}",
+        "name":  "api.offline-packages.show",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\OfflinePackageController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/offline-sync-logs",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\OfflinePackageController@storeSyncLog",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/question-options",
+        "name":  "api.question-options.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-options"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/question-options",
+        "name":  "api.question-options.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/question-options/{question_option}",
+        "name":  "api.question-options.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:show-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/question-options/{question_option}",
+        "name":  "api.question-options.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/question-options/{question_option}",
+        "name":  "api.question-options.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/questions",
+        "name":  "api.questions.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-questions"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/questions",
+        "name":  "api.questions.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/questions/{question}",
+        "name":  "api.questions.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:show-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/questions/{question}",
+        "name":  "api.questions.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/questions/{question}",
+        "name":  "api.questions.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/quizzes",
+        "name":  "api.quizzes.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/quizzes",
+        "name":  "api.quizzes.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/quizzes/{quiz}",
+        "name":  "api.quizzes.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:show-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/quizzes/{quiz}",
+        "name":  "api.quizzes.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/quizzes/{quiz}",
+        "name":  "api.quizzes.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/quizzes/{quiz}/archive",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@archive",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/quizzes/{quiz}/publish",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@publish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:publish-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/quizzes/{quiz}/unpublish",
+        "name":  "api.",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@unpublish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:unpublish-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/snapshots/assessment-progress",
+        "name":  "api.",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\SnapshotReportingController@assessmentProgress",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/snapshots/certificate-funnel",
+        "name":  "api.",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\SnapshotReportingController@certificateFunnel",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/snapshots/engagement-activity",
+        "name":  "api.",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\SnapshotReportingController@engagementActivity",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/snapshots/materialize",
+        "name":  "api.",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\SnapshotReportingController@materialize",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:admin|super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/student/dashboard/{studentId}",
+        "name":  "api.dashboards.student.dashboard",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\StudentDashboardController@dashboard",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/auditors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-auditors"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/auditors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/auditors/{auditor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/auditors/{auditor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/auditors/{auditor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\AuditorController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-auditor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/course-categories",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-categories"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/course-categories",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/course-categories/{courseCategory}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/course-categories/{courseCategory}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/course-categories/{courseCategory}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-category"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/course-categories/{courseCategory}/activate",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@activate",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/course-categories/{courseCategory}/deactivate",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseCategoryController@deactivate",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-courses"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/enrollable/list",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@enrollable",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/instructor/{instructorId}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@byInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/courses/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-course"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}/instructors",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@getInstructors",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses/{course}/instructors/assign",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@assignInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/courses/{course}/instructors/primary",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@setPrimaryInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/courses/{course}/instructors/primary",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@unsetPrimaryInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses/{course}/publish",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@publish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}/publishability",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@checkPublishability",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses/{course}/remove-instructor",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@removeInstructor",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/courses/{course}/status",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@changeStatus",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-units"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses/{course}/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses/{course}/units/reorder",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@reorder",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-lessons"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/courses/{course}/units/{unit}/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/courses/{course}/unpublish",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\CourseController@unpublish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/dashboard",
+        "name":  null,
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/enrollments",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/enrollments",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/enrollments/{enrollment}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/enrollments/{enrollment}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/enrollments/{enrollment}/progress",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@getProgress",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/enrollments/{enrollment}/status",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@updateStatus",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/instructors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-instructors"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/instructors",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/instructors/{instructor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/instructors/{instructor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/instructors/{instructor}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\InstructorController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-instructor"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-lessons"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/lessons",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/lessons/unit/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@byUnit",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/lessons/unit/{unit}/count",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getLessonCount",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/lessons/{lesson}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-lesson"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/lessons/{lesson}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/permissions",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\PermissionController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-permissions"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/question-options",
+        "name":  "question-options.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-options"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/question-options",
+        "name":  "question-options.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/question-options/{question_option}",
+        "name":  "question-options.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/super-admin/question-options/{question_option}",
+        "name":  "question-options.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/question-options/{question_option}",
+        "name":  "question-options.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionOptionController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-option"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/questions",
+        "name":  "questions.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-questions"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/questions",
+        "name":  "questions.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/questions/{question}",
+        "name":  "questions.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/super-admin/questions/{question}",
+        "name":  "questions.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/questions/{question}",
+        "name":  "questions.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuestionController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-question"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/quizzes",
+        "name":  "quizzes.index",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/quizzes",
+        "name":  "quizzes.store",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/quizzes/{quiz}",
+        "name":  "quizzes.show",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/super-admin/quizzes/{quiz}",
+        "name":  "quizzes.update",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/quizzes/{quiz}",
+        "name":  "quizzes.destroy",
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/quizzes/{quiz}/archive",
+        "name":  null,
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@archive",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/quizzes/{quiz}/publish",
+        "name":  null,
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@publish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:publish-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/quizzes/{quiz}/unpublish",
+        "name":  null,
+        "action":  "Modules\\AssesmentModule\\Http\\Controllers\\Api\\V1\\QuizController@unpublish",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:unpublish-quiz"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/reports/courses/content-performance/{courseId}",
+        "name":  "api.reports.super-admin.courses.content-performance",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@getContentPerformance",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/reports/courses/learning-gaps",
+        "name":  "api.reports.super-admin.courses.learning-gaps",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@identifyLearningGaps",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/reports/courses/popularity",
+        "name":  "api.reports.super-admin.courses.popularity",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@generateCoursePopularityReport",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/reports/students/completion-rates",
+        "name":  "api.reports.super-admin.students.completion-rates",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@getCompletionRates",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/reports/students/learning-time",
+        "name":  "api.reports.super-admin.students.learning-time",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@getLearningTimeAnalysis",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/reports/students/performance",
+        "name":  "api.reports.super-admin.students.performance",
+        "action":  "Modules\\ReportingModule\\Http\\Controllers\\AdminDashboardController@generateStudentPerformanceReport",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/roles",
+        "name":  "super-admin.roles.index",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/roles",
+        "name":  "super-admin.roles.store",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/roles/{role}",
+        "name":  "super-admin.roles.show",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/super-admin/roles/{role}",
+        "name":  "super-admin.roles.update",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/roles/{role}",
+        "name":  "super-admin.roles.destroy",
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\RoleController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-roles"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/students",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-students"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/students",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/students/{student}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/students/{student}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/students/{student}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\StudentController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-student"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-units"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/units",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/units/course/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@byCourse",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/units/course/{course}/count",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getUnitCount",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/units/{unit}/can-delete",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@canBeDeleted",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/units/{unit}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/units/{unit}/move",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@moveToPosition",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/units/{unit}/position",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@moveToPosition",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/users",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:list-users"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/super-admin/users",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:create-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/super-admin/users/{user}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:show-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/super-admin/users/{user}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:update-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/super-admin/users/{user}",
+        "name":  null,
+        "action":  "Modules\\UserMangementModule\\Http\\Controllers\\Api\\V1\\UserController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:super-admin,api",
+                           "permission:delete-user"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/units",
+        "name":  "api.units.index",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:list-units"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/units",
+        "name":  "api.units.store",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:create-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/units/course/{course}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@byCourse",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/units/{unit}",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api",
+                           "permission:show-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/units/{unit}",
+        "name":  "api.units.update",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:update-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/units/{unit}",
+        "name":  "api.units.destroy",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "permission:delete-unit"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/units/{unit}/duration",
+        "name":  null,
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@getDuration",
+        "middleware":  [
+                           "api",
+                           "auth:api",
+                           "role:student,api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/units/{unit}/lessons",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@byUnit",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/units/{unit}/lessons/count",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\LessonController@getLessonCount",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/units/{unit}/move",
+        "name":  "api.",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\UnitController@moveToPosition",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/virtual-sessions",
+        "name":  "api.virtual-sessions.index",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@index",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/virtual-sessions",
+        "name":  "api.virtual-sessions.store",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@store",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/virtual-sessions/{virtualSession}/attendance",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@storeAttendance",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/virtual-sessions/{virtualSession}/cancel",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@cancel",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/virtual-sessions/{virtualSession}/publish",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@publish",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/virtual-sessions/{virtual_session}",
+        "name":  "api.virtual-sessions.show",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT|PATCH",
+        "uri":  "api/v1/virtual-sessions/{virtual_session}",
+        "name":  "api.virtual-sessions.update",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "DELETE",
+        "uri":  "api/v1/virtual-sessions/{virtual_session}",
+        "name":  "api.virtual-sessions.destroy",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@destroy",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "POST",
+        "uri":  "api/v1/webhooks/integrations/{provider}",
+        "name":  "api.",
+        "action":  "Modules\\CommunicationModule\\Http\\Controllers\\Api\\V1\\VirtualSessionController@webhook",
+        "middleware":  [
+                           "api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/{enrollment}",
+        "name":  "api.enrollments.show",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@show",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/{enrollment}",
+        "name":  "api.enrollments.update",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@update",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "GET|HEAD",
+        "uri":  "api/v1/{enrollment}/progress",
+        "name":  "api.enrollments.progress",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@getProgress",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    },
+    {
+        "domain":  null,
+        "method":  "PUT",
+        "uri":  "api/v1/{enrollment}/status",
+        "name":  "api.enrollments.update-status",
+        "action":  "Modules\\LearningModule\\Http\\Controllers\\EnrollmentController@updateStatus",
+        "middleware":  [
+                           "api",
+                           "auth:api"
+                       ],
+        "path":  null
+    }
+]

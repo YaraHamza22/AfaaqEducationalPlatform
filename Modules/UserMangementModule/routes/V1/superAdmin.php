@@ -13,8 +13,10 @@ use Modules\UserMangementModule\Http\Controllers\Api\V1\RoleController;
 use Modules\UserMangementModule\Http\Controllers\Api\V1\StudentController;
 use Modules\UserMangementModule\Http\Controllers\Api\V1\UserController;
 use Modules\ReportingModule\Http\Controllers\AdminDashboardController;
+use Modules\AssesmentModule\Http\Controllers\Api\V1\QuizController;
 use Spatie\Permission\Models\Permission;
-
+use Modules\AssesmentModule\Http\Controllers\Api\V1\QuestionController;
+use Modules\AssesmentModule\Http\Controllers\Api\V1\QuestionOptionController;
 /**
  | -----------------------------------------------------------------------------------------------
  |Super Admin Dashboard Routes
@@ -419,6 +421,8 @@ Route::group([
      */
     Route::get('/units/{unit}/can-delete', [UnitController::class, 'canBeDeleted']);
 
+    Route::put('/units/{unit}/move', [UnitController::class, 'moveToPosition']);
+
     /**
      * @name   Move Unit to Position
      * @path   PUT /api/v1/super-admin/units/{unit}/position
@@ -495,15 +499,6 @@ Route::group([
     Route::get('/lessons/unit/{unit}', [LessonController::class, 'byUnit']);
 
     /**
-     * @name   Reorder Lessons in Unit
-     * @path   POST /api/v1/super-admin/lessons/unit/{unit}/reorder
-     * @desc   Reorder lessons within a unit.
-     * @param  {unit: slug}
-     * @controller LessonController@reorder
-     */
-    Route::post('/lessons/unit/{unit}/reorder', [LessonController::class, 'reorder']);
-
-    /**
      * @name   Get Lesson Count for Unit
      * @path   GET /api/v1/super-admin/lessons/unit/{unit}/count
      * @desc   Get number of lessons in a unit.
@@ -557,15 +552,7 @@ Route::group([
      */
     Route::get('/lessons/{lesson}/duration', [LessonController::class, 'getDuration']);
 
-    /**
-     * @name   Move Lesson to Position
-     * @path   PUT /api/v1/super-admin/lessons/{lesson}/position
-     * @desc   Change lesson order position.
-     * @param  {lesson: slug}
-     * @controller LessonController@moveToPosition
-     */
-    Route::put('/lessons/{lesson}/position', [LessonController::class, 'moveToPosition']);
-
+    
     /**
      * @name   List Lessons by Unit (nested)
      * @path   GET /api/v1/super-admin/courses/{course}/units/{unit}/lessons
@@ -802,7 +789,22 @@ Route::group([
     Route::delete('/auditors/{auditor}',[AuditorController::class,'destroy']);
    
 
-    Route::apiResource('roles', RoleController::class);
+   Route::apiResource('roles', RoleController::class)->names('super-admin.roles');
     Route::get('permissions', [PermissionController::class, 'index']);
     
+    /**Assesment Module */
+
+    /*Quizzes*/
+    Route::apiResource('quizzes', QuizController::class);
+    Route::post('quizzes/{quiz}/publish',   [QuizController::class, 'publish']);
+    Route::post('quizzes/{quiz}/unpublish', [QuizController::class, 'unpublish']);
+    Route::post('quizzes/{quiz}/archive', [QuizController::class,'archive']);
+    /**Questions*/
+    Route::apiResource('questions', QuestionController::class);
+    /*
+     Question Options
+    */
+    Route::apiResource('question-options', QuestionOptionController::class);
+
+
 });

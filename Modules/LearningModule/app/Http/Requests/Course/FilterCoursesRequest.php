@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\Course;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 
 /**
  * Form request for filtering courses.
  * Handles validation for course filtering parameters.
  */
-class FilterCoursesRequest extends FormRequest
+class FilterCoursesRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

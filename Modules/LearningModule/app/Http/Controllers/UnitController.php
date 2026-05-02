@@ -115,7 +115,8 @@ class UnitController extends Controller
                 'user_id' => Auth::id(),
                 'error' => $e->getMessage(),
             ]);
-            throw new Exception('An error occurred while creating the unit.', 500);
+           throw new Exception('An error occurred while creating the unit.', 500);
+
         }
     }
 

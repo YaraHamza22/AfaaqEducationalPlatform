@@ -20,8 +20,9 @@ class AuthController extends Controller
     {
         $data = $this->authService->register($request->validated());
         if ($data['status'] === 'error') {
-            return self::error('invalid credentials', 401, $data);
+            return self::error($data['message'] ?? 'registration failed', 422, $data);
         }
+
         return self::success($data, 'registered successfully', 201);
     }
 
@@ -30,8 +31,9 @@ class AuthController extends Controller
     {
         $data = $this->authService->login($request->validated());
         if ($data['status'] === 'error') {
-            return self::error('invalid credentials', 401, $data);
+            return self::error($data['message'] ?? 'invalid credentials', 401, $data);
         }
+
         return self::success($data, 'successfully logged in');
     }
 
@@ -50,12 +52,17 @@ class AuthController extends Controller
     public function refresh()
     {
         $token = JWTAuth::getToken();
+        if (! $token) {
+            return self::error('Token not provided', 401);
+        }
+
         $token = JWTAuth::refresh($token);
         $data = [
             'status' => 'success',
             'user' => auth()->user(),
-            'token' => $token
+            'token' => $token,
         ];
+
         return self::success($data);
     }
 }

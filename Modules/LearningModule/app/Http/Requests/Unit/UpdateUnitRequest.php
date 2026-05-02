@@ -2,14 +2,14 @@
 
 namespace Modules\LearningModule\Http\Requests\Unit;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Modules\LearningModule\Models\Unit;
 
 /**
  * Form request for updating an existing unit.
  * Translatable fields accept string or array with en/ar keys.
  */
-class UpdateUnitRequest extends FormRequest
+class UpdateUnitRequest extends ApiFormRequest
 {
     public function authorize(): bool
     {

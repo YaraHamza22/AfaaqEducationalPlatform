@@ -2,7 +2,7 @@
 
 namespace Modules\LearningModule\Http\Requests\Enrollment;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Modules\LearningModule\Models\Course;
 use App\Models\User;
@@ -17,7 +17,7 @@ use App\Models\User;
  * - User is not already enrolled in the course
  * - Enrollment type is valid
  */
-class StoreEnrollmentRequest extends FormRequest
+class StoreEnrollmentRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

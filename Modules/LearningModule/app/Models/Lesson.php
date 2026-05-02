@@ -12,6 +12,9 @@ use Spatie\Activitylog\LogOptions;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\Translatable\HasTranslations;
+use Modules\AssesmentModule\Models\Quiz;
+use Illuminate\Database\Eloquent\Relations\MorphMany;
+
 
 class Lesson extends Model implements HasMedia
 {
@@ -94,7 +97,10 @@ class Lesson extends Model implements HasMedia
         ->withPivot(['completed_at'])
         ->withTimestamps();
     }
-
+   public function quizzes(): MorphMany
+    {
+        return $this->morphMany(Quiz::class, 'quizable');
+    }
     /* =====================
      | Activity Log
      ===================== */

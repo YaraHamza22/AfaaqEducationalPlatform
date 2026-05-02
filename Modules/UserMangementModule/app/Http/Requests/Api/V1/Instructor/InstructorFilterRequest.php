@@ -2,9 +2,9 @@
 
 namespace Modules\UserMangementModule\Http\Requests\Api\V1\Instructor;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ApiFormRequest;
 
-class InstructorFilterRequest extends FormRequest
+class InstructorFilterRequest extends ApiFormRequest
 {
     /**
      * Get the validation rules that apply to the request.

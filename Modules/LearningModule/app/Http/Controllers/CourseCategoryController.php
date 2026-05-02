@@ -233,7 +233,8 @@ class CourseCategoryController extends Controller
                 'user_id' => Auth::id(),
                 'error' => $e->getMessage(),
             ]);
-            throw new Exception('An error occurred while deactivating the course category.', 500);
+         //   throw new Exception('An error occurred while deactivating the course category.', 500);
+         throw $e;
         }
     }
 }
