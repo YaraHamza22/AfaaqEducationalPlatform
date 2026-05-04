@@ -23,7 +23,7 @@ class StudentDashboardService
         $cacheKey = "student_dashboard_{$studentId}";
 
         return Cache::remember($cacheKey, 300, function () use ($studentId) {
-            $enrollments = Enrollment::where('student_id', $studentId)
+            $enrollments = Enrollment::where('learner_id', $studentId)
                 ->with(['course', 'course.courseCategory'])
                 ->get();
 
@@ -60,3 +60,4 @@ class StudentDashboardService
         });
     }
 }
+

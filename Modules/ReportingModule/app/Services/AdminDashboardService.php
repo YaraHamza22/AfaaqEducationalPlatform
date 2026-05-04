@@ -34,8 +34,8 @@ class AdminDashboardService
         return Cache::remember($cacheKey, 300, function () {
             $totalStudents = User::whereHas('studentProfile')->count();
             $activeStudents = Enrollment::where('enrollment_status', EnrollmentStatus::ACTIVE)
-                ->distinct('student_id')
-                ->count('student_id');
+                ->distinct('learner_id')
+                ->count('learner_id');
 
             $totalCourses = Course::count();
             $publishedCourses = Course::whereNotNull('published_at')->count();
@@ -81,3 +81,4 @@ class AdminDashboardService
         });
     }
 }
+

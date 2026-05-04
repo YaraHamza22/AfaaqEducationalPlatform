@@ -16,7 +16,7 @@ class StudentAnalyticsService
         $query = Enrollment::query();
 
         if (isset($filters['student_id'])) {
-            $query->where('student_id', $filters['student_id']);
+            $query->where('learner_id', $filters['student_id']);
         }
 
         if (isset($filters['course_id'])) {
@@ -31,7 +31,7 @@ class StudentAnalyticsService
             $query->where('enrolled_at', '<=', $filters['date_to']);
         }
 
-        $enrollments = $query->with(['student', 'course'])->get();
+        $enrollments = $query->with(['learner', 'course'])->get();
 
         return [
             'total_enrollments' => $enrollments->count(),
@@ -69,7 +69,7 @@ class StudentAnalyticsService
         $query = Enrollment::query();
 
         if (isset($filters['student_id'])) {
-            $query->where('student_id', $filters['student_id']);
+            $query->where('learner_id', $filters['student_id']);
         }
 
         if (isset($filters['course_id'])) {
@@ -143,7 +143,7 @@ class StudentAnalyticsService
 
     public function getStudentProgressByCourse(int $studentId): array
     {
-        return Enrollment::where('student_id', $studentId)
+        return Enrollment::where('learner_id', $studentId)
             ->with('course')
             ->get()
             ->map(function ($enrollment) {
@@ -172,8 +172,9 @@ class StudentAnalyticsService
             return [
                 'skill_category' => $categoryName,
                 'courses_completed' => $enrollments->pluck('course_id')->unique()->count(),
-                'students_count' => $enrollments->pluck('student_id')->unique()->count(),
+                'students_count' => $enrollments->pluck('learner_id')->unique()->count(),
             ];
         })->values()->toArray();
     }
 }
+

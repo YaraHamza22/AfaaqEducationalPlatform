@@ -26,7 +26,7 @@ class InstructorDashboardService
 
             foreach ($courses as $course) {
                 $enrollments = $course->enrollments;
-                $nonUniqueStudents = $nonUniqueStudents->merge($enrollments->pluck('student_id'));
+                $nonUniqueStudents = $nonUniqueStudents->merge($enrollments->pluck('learner_id'));
                 $totalStudents = $nonUniqueStudents->unique()->count();
 
                 $courseStats[] = [
@@ -70,3 +70,4 @@ class InstructorDashboardService
             ->toArray();
     }
 }
+
