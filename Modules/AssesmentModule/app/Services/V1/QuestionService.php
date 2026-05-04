@@ -3,6 +3,9 @@
 namespace Modules\AssesmentModule\Services\V1;
 
 use Modules\AssesmentModule\Models\Question;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Arr;
+use function collect;
 use Throwable;
 
 /**
@@ -17,54 +20,62 @@ use Throwable;
 class QuestionService extends BaseService
 {
     /**
-     * Fetch a paginated list of questions based on the given filters.
-     *
-     * @param array $filters The filters to apply to the question query (e.g., quiz_id, type).
-     * @param int $perPage The number of questions per page (default is 15).
-     * @return mixed The paginated list of questions.
-     *
-     * @throws \Exception If an error occurs while fetching the questions.
+     * Fetch a paginated list of questions based on the given filters with options.
      */
-    public function index(array $filters = [], int $perPage = 15)
+    public function indexWithOptions(array $filters = [], int $perPage = 15)
     {
         try {
-            return Question::query()->filter($filters)->paginate($perPage);
+            return Question::query()
+                ->with('options')
+                ->filter($filters)
+                ->paginate($perPage);
         } catch (Throwable $e) {
             throw new \Exception('Failed to fetch questions: ' . $e->getMessage());
         }
     }
 
     /**
-     * Store a new question with the provided data.
-     *
-     * @param array $data The data to create the question.
-     * @return \Modules\AssesmentModule\Models\Question The created question.
-     *
-     * @throws Throwable If an error occurs while saving the question.
+     * Store a new question with its options.
      */
-    public function store(array $data)
+    public function storeWithOptions(array $data)
     {
-        try {
-            return Question::create($data);
-        } catch (Throwable $e) {
-            throw new \Exception('Failed to create question: ' . $e->getMessage());
-        }
+        return \Illuminate\Support\Facades\DB::transaction(function () use ($data) {
+            $questionData = \Illuminate\Support\Arr::except($data, ['options']);
+            $question = Question::create($questionData);
+
+            if (isset($data['options']) && is_array($data['options'])) {
+                foreach ($data['options'] as $option) {
+                    $question->options()->create($option);
+                }
+            }
+
+            return $question;
+        });
     }
 
     /**
-     * Retrieve a specific question by its ID.
-     *
-     * @param int $id The ID of the question to retrieve.
-     * @return \Modules\AssesmentModule\Models\Question The retrieved question.
-     *
-     * @throws Throwable If an error occurs while retrieving the question.
+     * Store multiple questions with their options in bulk.
      */
-    public function show($id)
+    public function storeBulkWithOptions(array $questionsData)
+    {
+        return \Illuminate\Support\Facades\DB::transaction(function () use ($questionsData) {
+            $createdQuestions = [];
+            foreach ($questionsData as $data) {
+                $createdQuestions[] = $this->storeWithOptions($data);
+            }
+            return collect($createdQuestions);
+        });
+    }
+
+    /**
+     * Retrieve a specific question by its ID with options.
+     */
+    public function showWithOptions(int $id)
     {
         try {
-            $question = Question::find($id);
+            $question = Question::with('options')->find($id);
 
-            if (! $question) {
+            if (!$question) {
                 throw new \Exception('Question not found');
             }
 
@@ -75,36 +86,71 @@ class QuestionService extends BaseService
     }
 
     /**
-     * Update an existing question with the provided data.
-     *
-     * @param int $id The ID of the question to update.
-     * @param array $data The data to update the question.
-     * @return \Modules\AssesmentModule\Models\Question The updated question.
-     *
-     * @throws Throwable If an error occurs while updating the question.
+     * Update an existing question and its options.
      */
-    public function update($id, array $data)
+    public function updateWithOptions(int $id, array $data)
+    {
+        return \Illuminate\Support\Facades\DB::transaction(function () use ($id, $data) {
+            $question = Question::findOrFail($id);
+            
+            $questionData = \Illuminate\Support\Arr::except($data, ['options']);
+            $question->update($questionData);
+
+            if (isset($data['options']) && is_array($data['options'])) {
+                $incomingOptionIds = collect($data['options'])->pluck('id')->filter()->toArray();
+                
+                // Delete options not in the request
+                $question->options()->whereNotIn('id', $incomingOptionIds)->delete();
+
+                foreach ($data['options'] as $optionData) {
+                    if (isset($optionData['id'])) {
+                        $question->options()->where('id', $optionData['id'])->update(\Illuminate\Support\Arr::except($optionData, ['id']));
+                    } else {
+                        $question->options()->create($optionData);
+                    }
+                }
+            }
+
+            return $question->load('options');
+        });
+    }
+
+    /**
+     * Bulk delete questions.
+     */
+    public function bulkDestroy(array $ids)
     {
         try {
-            $question = Question::findOrFail($id);
-
-            $question->update($data);
-
-            return $question;
+            return Question::whereIn('id', $ids)->delete();
         } catch (Throwable $e) {
-            throw new \Exception('Failed to update question: ' . $e->getMessage());
+            throw new \Exception('Failed to bulk delete questions: ' . $e->getMessage());
         }
     }
 
     /**
-     * Delete a question by its ID.
-     *
-     * @param int $id The ID of the question to delete.
-     * @return void
-     *
-     * @throws Throwable If an error occurs while deleting the question.
+     * Original index method for backward compatibility if needed.
      */
-    public function destroy($id)
+    public function index(array $filters = [], int $perPage = 15)
+    {
+        return $this->indexWithOptions($filters, $perPage);
+    }
+
+    public function show(int $id)
+    {
+        return $this->showWithOptions($id);
+    }
+
+    public function store(array $data)
+    {
+        return $this->storeWithOptions($data);
+    }
+
+    public function update(int $id, array $data)
+    {
+        return $this->updateWithOptions($id, $data);
+    }
+
+    public function destroy(int $id)
     {
         try {
             $question = Question::findOrFail($id);

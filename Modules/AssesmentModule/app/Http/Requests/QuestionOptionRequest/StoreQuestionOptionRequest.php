@@ -110,7 +110,7 @@ class StoreQuestionOptionRequest extends ApiFormRequest
             }
             if (!$question) return;
 
-            if ($question->type !== QuestionType::MULTIPLE_CHOICE) {
+            if (!($question->type instanceof QuestionType) || !$question->type->isMcq()) {
                 $v->errors()->add('question_id', 'Options are allowed only for MCQ questions.');
             }
         });

@@ -4,9 +4,12 @@ namespace Modules\AssesmentModule\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Response;
 use Modules\AssesmentModule\Http\Requests\QuestionRequest\StoreQuestionRequest;
 use Modules\AssesmentModule\Http\Requests\QuestionRequest\UpdateQuestionRequest;
 use Modules\AssesmentModule\Services\V1\QuestionService;
+use Modules\AssesmentModule\Transformers\QuestionResource;
 use Throwable;
 
 /**
@@ -15,7 +18,7 @@ use Throwable;
  *
  * @package Modules\AssesmentModule\Http\Controllers\Api\V1
  */
-class QuestionController extends Controller
+class QuestionController extends \App\Http\Controllers\Controller
 {
     private $questionService;
 
@@ -50,14 +53,21 @@ class QuestionController extends Controller
             $perPage = (int) $request->integer('per_page', 15);
             $questions = $this->questionService->index($filters, $perPage);
 
-            return self::paginated($questions, 'Operation successful', 200);
+            // Wrap in QuestionResource so that eager-loaded 'options' are serialised
+            $questions->setCollection(
+                $questions->getCollection()->map(
+                    fn ($q) => (new QuestionResource($q))->resolve()
+                )
+            );
+
+            return static::paginated($questions, 'Operation successful', 200);
         } catch (Throwable $e) {
-            return self::error($e->getMessage(), 500);
+            return static::error($e->getMessage(), 500);
         }
     }
 
     /**
-     * Store a newly created question.
+     * Store a newly created question with its options.
      *
      * @param StoreQuestionRequest $request The validated request data.
      * @throws Throwable If an unexpected error occurs during the request.
@@ -67,16 +77,45 @@ class QuestionController extends Controller
         try {
             $data = $request->validated();
 
-            $question = $this->questionService->store($data);
+            $question = $this->questionService->storeWithOptions($data);
 
-            return self::success($question, 'Question created successfully', 201);
+            return static::success(new QuestionResource($question), 'Question created successfully', 201);
         } catch (Throwable $e) {
-            return self::error($e->getMessage(), 500);
+            return static::error($e->getMessage(), 500);
         }
     }
 
     /**
-     * Display the specified question.
+     * Store multiple questions with their options in bulk.
+     *
+     * @param Request $request The request containing an array of questions.
+     * @return \Illuminate\Http\JsonResponse JSON response with created questions or error.
+     */
+    public function storeBulk(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'questions' => 'required|array|min:1',
+                // Each item should follow StoreQuestionRequest rules essentially
+                'questions.*.quiz_id' => 'required|exists:quizzes,id',
+                'questions.*.type' => 'required|string',
+                'questions.*.question_text' => 'required|array',
+                'questions.*.point' => 'required|integer',
+                'questions.*.order_index' => 'required|integer',
+                'questions.*.is_required' => 'required|boolean',
+                'questions.*.options' => 'sometimes|array',
+            ]);
+
+            $questions = $this->questionService->storeBulkWithOptions($data['questions']);
+
+            return static::success(QuestionResource::collection($questions), 'Bulk questions created successfully', 201);
+        } catch (Throwable $e) {
+            return static::error($e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Display the specified question with options.
      *
      * @param int|string $id The ID of the question to retrieve.
      * @return \Illuminate\Http\Response A JSON response containing the question.
@@ -86,16 +125,16 @@ class QuestionController extends Controller
     public function show($id)
     {
         try {
-            $question = $this->questionService->show((int) $id);
+            $question = $this->questionService->showWithOptions((int) $id);
 
-            return self::success($question, 'Operation successful', 200);
+            return static::success(new QuestionResource($question), 'Operation successful', 200);
         } catch (Throwable $e) {
-            return self::error($e->getMessage(), 500);
+            return static::error($e->getMessage(), 500);
         }
     }
 
     /**
-     * Update the specified question.
+     * Update the specified question and its options.
      *
      * @param UpdateQuestionRequest $request The validated request data.
      * @param int|string $id The ID of the question to update.
@@ -108,11 +147,11 @@ class QuestionController extends Controller
         try {
             $data = $request->validated();
 
-            $question = $this->questionService->update((int) $id, $data);
+            $question = $this->questionService->updateWithOptions((int) $id, $data);
 
-            return self::success($question, 'Question updated successfully', 200);
+            return static::success(new QuestionResource($question), 'Question updated successfully', 200);
         } catch (Throwable $e) {
-            return self::error($e->getMessage(), 500);
+            return static::error($e->getMessage(), 500);
         }
     }
 
@@ -129,9 +168,31 @@ class QuestionController extends Controller
         try {
             $this->questionService->destroy((int) $id);
 
-            return self::success(null, 'Question deleted successfully', 200);
+            return static::success(null, 'Question deleted successfully', 200);
         } catch (Throwable $e) {
-            return self::error($e->getMessage(), 500);
+            return static::error($e->getMessage(), 500);
+        }
+    }
+
+    /**
+     * Bulk delete questions.
+     *
+     * @param Request $request The request containing an array of question IDs.
+     * @return \Illuminate\Http\JsonResponse JSON response indicating success or failure.
+     */
+    public function bulkDestroy(Request $request)
+    {
+        try {
+            $data = $request->validate([
+                'ids' => 'required|array|min:1',
+                'ids.*' => 'exists:questions,id',
+            ]);
+
+            $this->questionService->bulkDestroy($data['ids']);
+
+            return static::success(null, 'Questions deleted successfully', 200);
+        } catch (Throwable $e) {
+            return static::error($e->getMessage(), 500);
         }
     }
 }

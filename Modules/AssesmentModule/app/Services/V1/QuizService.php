@@ -8,6 +8,8 @@ use InvalidArgumentException;
 use Modules\AssesmentModule\Enums\QuizStatus;
 use Modules\AssesmentModule\Enums\QuizType;
 use Modules\AssesmentModule\Models\Quiz;
+use Modules\LearningModule\Models\Lesson;
+use Modules\LearningModule\Models\Unit;
 use Throwable;
 
 class QuizService extends BaseService
@@ -188,7 +190,16 @@ class QuizService extends BaseService
         }
 
         if (! empty($data['quizable_type']) && ! empty($data['quizable_id'])) {
-            unset($data['course_id'], $data['unit_id'], $data['lesson_id']);
+            $resolvedCourseId = $this->resolveCourseIdFromOwner(
+                (string) $data['quizable_type'],
+                (int) $data['quizable_id']
+            );
+
+            if ($resolvedCourseId !== null) {
+                $data['course_id'] = $resolvedCourseId;
+            }
+
+            unset($data['unit_id'], $data['lesson_id']);
             return $data;
         }
 
@@ -216,12 +227,35 @@ class QuizService extends BaseService
             $field = array_key_first($providedOwners);
             $data['quizable_type'] = $providedOwners[$field]->value;
             $data['quizable_id'] = $data[$field];
+            $resolvedCourseId = $this->resolveCourseIdFromOwner(
+                (string) $data['quizable_type'],
+                (int) $data['quizable_id']
+            );
+
+            if ($resolvedCourseId !== null) {
+                $data['course_id'] = $resolvedCourseId;
+            }
         } elseif ($requireOwner) {
             throw new InvalidArgumentException('Quiz owner is required');
         }
 
-        unset($data['course_id'], $data['unit_id'], $data['lesson_id']);
+        unset($data['unit_id'], $data['lesson_id']);
 
         return $data;
+    }
+
+    private function resolveCourseIdFromOwner(string $quizableType, int $quizableId): ?int
+    {
+        $type = QuizType::tryFrom($quizableType);
+
+        return match ($type) {
+            QuizType::COURSE => $quizableId,
+            QuizType::UNIT => Unit::query()->whereKey($quizableId)->value('course_id'),
+            QuizType::LESSON => Lesson::query()
+                ->whereKey($quizableId)
+                ->join('units', 'lessons.unit_id', '=', 'units.unit_id')
+                ->value('units.course_id'),
+            default => null,
+        };
     }
 }

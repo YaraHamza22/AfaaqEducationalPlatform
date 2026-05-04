@@ -45,6 +45,7 @@ class Quiz extends Model
      * @var array
      */
     protected $fillable = [
+        'course_id',
         'instructor_id',
         'quizable_id',
         'quizable_type',

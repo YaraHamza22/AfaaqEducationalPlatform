@@ -104,7 +104,7 @@ class Question extends Model
      */
     protected function isMultiChoiceQuestion(): Attribute
     {
-        return Attribute::make(get: fn () => $this->type === 'multiple_choice');
+        return Attribute::make(get: fn () => in_array((string)$this->getRawOriginal('type'), ['mcq', 'multiple_choice'], true));
     }
 
     /**
@@ -114,7 +114,18 @@ class Question extends Model
      */
     protected function type(): Attribute
     {
-        return Attribute::make(set: fn ($v) => is_string($v) ? strtolower(trim($v)) : $v);
+        return Attribute::make(set: function ($v) {
+            if (!is_string($v)) {
+                return $v;
+            }
+
+            $normalized = strtolower(trim($v));
+            return match ($normalized) {
+                'short_answer' => 'text',
+                'multiple_choice' => 'mcq',
+                default => $normalized,
+            };
+        });
     }
 
     /**

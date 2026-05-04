@@ -63,7 +63,7 @@ class StoreQuestionRequest extends ApiFormRequest
             // Validate that the type is one of the allowed types.
             'type' => [
                 'required',
-                new \Illuminate\Validation\Rules\Enum(\Modules\AssesmentModule\Enums\QuestionType::class)
+                Rule::in(['mcq', 'true_false', 'text', 'multiple_choice', 'short_answer']),
             ],
 
             // Validate that question_text is an array.
@@ -99,6 +99,12 @@ class StoreQuestionRequest extends ApiFormRequest
                 'required',
                 'boolean',
             ],
+
+            // Added rules for options
+            'options' => ['sometimes', 'array', 'min:1'],
+            'options.*.option_text' => ['required', 'array'],
+            'options.*.option_text.*' => ['required', 'string'],
+            'options.*.is_correct' => ['required', 'boolean'],
         ];
     }
 

@@ -37,8 +37,17 @@ Route::middleware(['auth:api'])->prefix('v1')->group(function () {
     Route::get('courses/{courseId}/certificate', [CertificateController::class, 'download']);
 
     /*
-     Answers
-    */
+     * Super Admin Question Management
+     */
+    Route::prefix('super-admin')->group(function () {
+        Route::post('questions/bulk', [\Modules\AssesmentModule\Http\Controllers\Api\V1\SuperAdmin\QuestionController::class, 'storeBulk']);
+        Route::delete('questions/bulk', [\Modules\AssesmentModule\Http\Controllers\Api\V1\SuperAdmin\QuestionController::class, 'bulkDestroy']);
+        Route::apiResource('questions', \Modules\AssesmentModule\Http\Controllers\Api\V1\SuperAdmin\QuestionController::class);
+    });
+
+    /*
+     * Answers
+     */
     Route::apiResource('answers', AnswerController::class);
 
 });

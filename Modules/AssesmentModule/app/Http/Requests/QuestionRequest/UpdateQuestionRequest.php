@@ -63,8 +63,8 @@ class UpdateQuestionRequest extends ApiFormRequest
 
         return [
             'type' => [
-                'sometimes', 
-                new \Illuminate\Validation\Rules\Enum(\Modules\AssesmentModule\Enums\QuestionType::class),
+                'sometimes',
+                Rule::in(['mcq', 'true_false', 'text', 'multiple_choice', 'short_answer']),
             ],
 
             'question_text' => [
@@ -95,6 +95,13 @@ class UpdateQuestionRequest extends ApiFormRequest
                 'sometimes', // Allows partial updates
                 'boolean',
             ],
+
+            // Added rules for options
+            'options' => ['sometimes', 'array'],
+            'options.*.id' => ['sometimes', 'integer', 'exists:question_options,id'],
+            'options.*.option_text' => ['sometimes', 'array'],
+            'options.*.option_text.*' => ['sometimes', 'string'],
+            'options.*.is_correct' => ['sometimes', 'boolean'],
         ];
     }
 

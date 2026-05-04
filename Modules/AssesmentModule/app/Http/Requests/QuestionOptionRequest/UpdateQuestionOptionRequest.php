@@ -6,6 +6,7 @@ use Modules\AssesmentModule\Models\Question;
 use App\Http\Requests\ApiFormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Validator;
+use Modules\AssesmentModule\Enums\QuestionType;
 
 /**
  * Class UpdateQuestionOptionRequest
@@ -81,7 +82,7 @@ class UpdateQuestionOptionRequest extends ApiFormRequest
     {
         $validator->after(function (Validator $validator1) {
             $question = $this->route('question');
-            if ($question instanceof Question && $question->type !== 'mcq') {
+            if ($question instanceof Question && (!($question->type instanceof QuestionType) || !$question->type->isMcq())) {
                 $validator1->errors()->add('question_id', 'Options are allowed only for MCQ questions.');
             }
         });
